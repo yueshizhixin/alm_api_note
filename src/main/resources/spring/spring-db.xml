@@ -5,12 +5,12 @@
     <bean name="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:db.properties</value>
+                <value>classpath:mybatis/db.properties</value>
             </list>
         </property>
     </bean>
-    <!-- ============================================== dbcp2连接池 ================================================ -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+    <!-- dbcp2连接池  -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${db.driverClassName}"/>
         <property name="url" value="${db.url}"/>
         <property name="username" value="${db.username}"/>
