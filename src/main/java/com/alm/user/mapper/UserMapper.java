@@ -3,7 +3,10 @@ package com.alm.user.mapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 
 public interface UserMapper {
     long countByExample(UserExample example);
