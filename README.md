@@ -3,7 +3,7 @@
 >[English](README.en.md)
 
 ###简述
-- maven+spring+mybatis
+- maven+springMVC+mybatis
 
 ### 版本
 - v0.0.1 注册与登录

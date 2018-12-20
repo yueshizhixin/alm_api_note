@@ -3,7 +3,7 @@
 >[简体中文](README.md)
 
 ### Description
-- maven+spring+mybatis
+- maven+springMVC+mybatis
 
 ### Version
 - signUp and signIn

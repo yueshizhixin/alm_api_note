@@ -9,5 +9,5 @@ import com.alm.user.po.User;
  * <p>DESC:</p>
  */
 public interface UserService {
-    boolean insertUser(User user);
+    boolean insertSelective(User user);
 }

@@ -21,21 +21,4 @@ import java.util.Date;
 @RequestMapping("/test")
 public class UserController {
 
-//    @Autowired
-//    UserService userService;
-
-
-//    @RequestMapping("/index")
-//    @ResponseBody
-//    public ModelAndView test(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("");
-//        return modelAndView;
-//    }
-//
-//    public void add() {
-//        User user = new User();
-//        user.setPhone("13155556666");
-//
-//    }
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd"
+>
+    <context:component-scan base-package="com.alm"/>
+
+    <bean name="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:mybatis/db.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 连接池  -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${db.driverClassName}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="maxTotal" value="${db.maxTotal}"/>
+        <property name="maxIdle" value="${db.minIdle}"/>
+        <property name="maxWaitMillis" value="${db.maxWaitMillis}"/>
+        <property name="defaultAutoCommit" value="${db.defaultAutoCommit}"/>
+        <property name="validationQuery" value="${db.validationQuery}"/>
+        <property name="testOnBorrow" value="${db.testOnBorrow}"/>
+        <property name="poolPreparedStatements" value="${db.poolPreparedStatements}"/>
+    </bean>
+
+    <!-- SqlSessionFactory  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*/*.xml"/>
+    </bean>
+    <!-- mapper映射 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.alm.*.mapper"/>
+    </bean>
+
+    <!--事务配置-->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+    <!--<tx:attributes>-->
+    <!--<tx:method name="delete*" propagation="REQUIRED" read-only="false"-->
+    <!--rollback-for="java.lang.Exception"/>-->
+    <!--<tx:method name="insert*" propagation="REQUIRED" read-only="false"-->
+    <!--rollback-for="java.lang.Exception"/>-->
+    <!--<tx:method name="update*" propagation="REQUIRED" read-only="false"-->
+    <!--rollback-for="java.lang.Exception"/>-->
+    <!--<tx:method name="*" propagation="REQUIRED" read-only="true"/>-->
+    <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--<aop:config>-->
+    <!--<aop:pointcut id="pc" expression="execution(* com.alm..*..service..*(..))"/>-->
+    <!--<aop:advisor pointcut-ref="pc" advice-ref="txAdvice"/>-->
+    <!--</aop:config>-->
+</beans>

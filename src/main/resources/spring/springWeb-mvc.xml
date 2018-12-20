@@ -50,6 +50,6 @@
         <!--网页文件存放位置-->
         <property name="prefix" value="/WEB-INF/view"/>
         <!--相当于url后缀加上.jsp-->
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 </beans>
