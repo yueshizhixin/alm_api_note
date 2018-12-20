@@ -1,10 +1,9 @@
 # RESTful API of [yueshizhixin.github.io](https://yueshizhixin.github.io)
 
->[English](README.en.md)
+>[简体中文](README.md)
 
-###简述
+### Description
 - maven+spring+mybatis
 
-### 版本
-- v0.0.1 注册与登录
-
+### Version
+- signUp and signIn
