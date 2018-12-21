@@ -1,6 +1,5 @@
 package com.alm.system.authority;
 
-import com.alm.user.po.User;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
