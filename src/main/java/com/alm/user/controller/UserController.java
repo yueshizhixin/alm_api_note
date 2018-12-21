@@ -13,9 +13,9 @@ import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
- * <p>USER: LISHUAI</p>
- * <p>DATE: 2018-12-17 19:26</p>
- * <p>DESC: </p>
+ * <p>user: LISHUAI</p>
+ * <p>date: 2018-12-17 19:26</p>
+ * <p>desc: </p>
  */
 @Controller
 @RequestMapping("/test")

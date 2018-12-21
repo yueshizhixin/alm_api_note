@@ -1,15 +1,13 @@
-package com.alm.listener;
-
-import org.apache.logging.slf4j.Log4jLogger;
+package com.alm.system.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
  * Created by IntelliJ IDEA.
- * <p>USER: LISHUAI</p>
- * <p>DATE: 2018-12-20 20:35</p>
- * <p>DESC:        </p>
+ * <p>user: LISHUAI</p>
+ * <p>date: 2018-12-20 20:35</p>
+ * <p>desc: 服务启动监听器 </p>
  */
 public class InitListener implements ServletContextListener {
 

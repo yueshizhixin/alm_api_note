@@ -18,9 +18,9 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 
 /**
  * Created by IntelliJ IDEA.
- * <p>USER: LISHUAI</p>
- * <p>DATE: 2018-12-18 20:51</p>
- * <p>DESC:
+ * <p>user: LISHUAI</p>
+ * <p>date: 2018-12-18 20:51</p>
+ * <p>desc: </p>
  */
 public class MybatisCommentUtil implements CommentGenerator {
     private Properties properties;

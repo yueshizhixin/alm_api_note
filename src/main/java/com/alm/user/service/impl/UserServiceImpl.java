@@ -14,9 +14,9 @@ import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
- * <p>USER: LISHUAI</p>
- * <p>DATE: 2018-12-19 19:46</p>
- * <p>DESC:        </p>
+ * <p>user: LISHUAI</p>
+ * <p>date: 2018-12-19 19:46</p>
+ * <p>desc: </p>
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,6 +40,18 @@ public class UserServiceImpl implements UserService {
         }
         user.setCreateTime(dateStringConverter.fromString("2018-05-14 02:14"));
         user.setLatestTime(dateStringConverter.fromString("2018-05-14 02:14"));
-        return userMapper.insertSelective(user) == 1;
+        int a=userMapper.insertSelective(user);
+        System.out.println("====插入成功");
+        System.out.println(user.getId());
+        User getUser=userMapper.selectByPrimaryKey(user.getId());
+        System.out.println(getUser);
+        User user1=new User();
+        insert(user1);
+        return  a== 1;
+    }
+
+    @Override
+    public boolean insert(User user) {
+        return userMapper.insert(user) == 1;
     }
 }

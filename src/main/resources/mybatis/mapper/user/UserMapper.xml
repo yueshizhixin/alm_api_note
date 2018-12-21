@@ -120,7 +120,7 @@
       #{vipLv,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{latestTime,jdbcType=TIMESTAMP}, 
       #{isSign,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.alm.user.po.User">
+  <insert id="insertSelective" parameterType="com.alm.user.po.User" useGeneratedKeys="true" keyProperty="id">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

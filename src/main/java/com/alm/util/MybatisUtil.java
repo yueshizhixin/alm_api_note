@@ -13,9 +13,9 @@ import org.springframework.util.ResourceUtils;
 
 /**
  * Created by IntelliJ IDEA.
- * <p>USER: LISHUAI</p>
- * <p>DATE: 2018-12-18 19:57</p>
- * <p>DESC:
+ * <p>user: LISHUAI</p>
+ * <p>date: 2018-12-18 19:57</p>
+ * <p>desc: </p>
  */
 public class MybatisUtil {
     /**
