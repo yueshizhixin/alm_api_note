@@ -1,4 +1,4 @@
-package com.alm.test.controller;
+package com.alm.demo.controller;
 
 import com.alm.system.authority.Authority;
 import com.alm.system.authority.AuthorityEnum;
@@ -21,16 +21,16 @@ import javax.servlet.http.HttpServletRequest;
  * <p>desc: </p>
  */
 @Controller
-@RequestMapping("/test")
-public class TestController {
+@Authority(AuthorityEnum.FORBIDDEN)
+public class DemoController {
     private final UserService userService;
 
     @Autowired
-    public TestController(UserService userService) {
+    public DemoController(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping("/t1")
+    @RequestMapping("/d1")
     @ResponseBody
     public ModelAndView test(HttpServletRequest req){
         ModelAndView modelAndView = new ModelAndView();
@@ -43,21 +43,21 @@ public class TestController {
     /**
      * 返回json
      */
-    @RequestMapping("/t2")
+    @RequestMapping("/d2")
     @ResponseBody
     public String test2(HttpServletRequest req){
         return "/test/t2";
     }
 
     @Authority
-    @RequestMapping("/t3")
+    @RequestMapping("/d3")
     public String test3(HttpServletRequest req){
         req.setAttribute("aa","req.setAttr的值");
         return "/test/t1";
     }
 
     @Authority(AuthorityEnum.FORBIDDEN)
-    @RequestMapping("/t4")
+    @RequestMapping("/d4")
     public String test4(HttpServletRequest req){
         req.setAttribute("aa","req.setAttr的值");
         return "/test/t1";

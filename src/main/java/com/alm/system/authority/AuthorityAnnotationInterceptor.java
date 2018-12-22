@@ -34,12 +34,12 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
                     if (authority != null) {
                         if (AuthorityEnum.UNAUTHORIZED == authority.value()) {
                             if (req.getSession().getAttribute("user") == null) {
-                                res.sendRedirect("/test/401.c");
+                                res.sendRedirect("/demo/401.c");
                                 return false;
                             }
                         } else if (AuthorityEnum.FORBIDDEN == authority.value()) {
-                            res.sendRedirect("/test/403.c");
-                            return true;
+                            res.sendRedirect("/demo/403.c");
+                            return false;
                         }
                     }
                 }
