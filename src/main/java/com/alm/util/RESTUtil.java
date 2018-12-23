@@ -15,7 +15,8 @@ public class RESTUtil {
      *
      * @param ok
      * @param msg
-     * @param data
+     * @param t
+     * @param <T>
      * @return
      */
     public static<T> String HTTP200(int ok,String msg,T t){
