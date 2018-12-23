@@ -9,6 +9,11 @@ import com.alm.user.po.User;
  * <p>desc: </p>
  */
 public interface UserService {
-    boolean insertSelective(User user);
-    boolean insert(User user);
+
+    /**
+     * 查询用户公开信息
+     * @param id 主键
+     * @return 待补充
+     */
+    User selectUserPublicMessage(int id);
 }

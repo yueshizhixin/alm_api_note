@@ -11,4 +11,5 @@
 ###以下
 - 全局try catch
 - rest
+- i18n
 

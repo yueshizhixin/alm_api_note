@@ -21,8 +21,4 @@ public class NoteController {
         this.noteService = noteService;
     }
 
-    @RequestMapping("/notes")
-    public void Notes() {
-        noteService.selectAll();
-    }
 }

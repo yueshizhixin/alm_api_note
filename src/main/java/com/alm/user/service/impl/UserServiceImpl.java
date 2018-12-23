@@ -23,35 +23,19 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 
-    private final NoteMapper noteMapper;
-
-    DateStringConverter dateStringConverter = new DateStringConverter();
-
     @Autowired
-    public UserServiceImpl(UserMapper userMapper, NoteMapper noteMapper) {
+    public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
-        this.noteMapper = noteMapper;
     }
 
+    /**
+     * 查询用户公开信息
+     *
+     * @param id 主键
+     * @return 待补充
+     */
     @Override
-    public boolean insertSelective(User user) {
-        if (user.getPwd() == null || user.getPwd().isEmpty()) {
-            user.setPwd("123456");
-        }
-        user.setCreateTime(dateStringConverter.fromString("2018-05-14 02:14"));
-        user.setLatestTime(dateStringConverter.fromString("2018-05-14 02:14"));
-        int a=userMapper.insertSelective(user);
-        System.out.println("====插入成功");
-        System.out.println(user.getId());
-        User getUser=userMapper.selectByPrimaryKey(user.getId());
-        System.out.println(getUser);
-        User user1=new User();
-        insert(user1);
-        return  a== 1;
-    }
-
-    @Override
-    public boolean insert(User user) {
-        return userMapper.insert(user) == 1;
+    public User selectUserPublicMessage(int id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 }

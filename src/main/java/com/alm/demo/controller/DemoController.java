@@ -1,5 +1,6 @@
 package com.alm.demo.controller;
 
+import com.alm.demo.service.DemoService;
 import com.alm.system.authority.Authority;
 import com.alm.system.authority.AuthorityEnum;
 import com.alm.user.po.User;
@@ -21,13 +22,16 @@ import javax.servlet.http.HttpServletRequest;
  * <p>desc: </p>
  */
 @Controller
-@Authority(AuthorityEnum.FORBIDDEN)
+@RequestMapping("/demo")
 public class DemoController {
+
+    private final DemoService demoser;
     private final UserService userService;
 
     @Autowired
-    public DemoController(UserService userService) {
+    public DemoController(UserService userService, DemoService demoser) {
         this.userService = userService;
+        this.demoser = demoser;
     }
 
     @RequestMapping("/d1")
@@ -67,18 +71,12 @@ public class DemoController {
     public String add(HttpServletRequest req) {
         User user = new User();
         user.setPhone("13155556666");
-        userService.insertSelective(user);
         return "/test/t1";
     }
 
-    @RequestMapping("/401")
-    @ResponseBody
-    public String Unauthorized(){
-        return "{\"code\":401}";
+    @RequestMapping("/page")
+    public void page() {
+        demoser.selectAll();
     }
-    @RequestMapping("/403")
-    @ResponseBody
-    public String Forbidden(){
-        return "{\"code\":403}";
-    }
+
 }
