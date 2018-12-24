@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.PathParam;
 import java.util.Date;
 
 /**
@@ -30,15 +31,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String getUser(HttpServletRequest req,@ModelAttribute User u) {
-        User user= userService.selectUserPublicMessage(u.getId());
+        User user = userService.selectUserPublicMessage(u.getId());
         if (user != null) {
-            return RESTUtil.HTTP200(1,"ss",user);
-        }
-        else{
-            return "没有这个人";
+            return RESTUtil.HTTP200(user);
+        } else {
+            return RESTUtil.HTTP200(0, "无该用户");
         }
     }
+
 
 }

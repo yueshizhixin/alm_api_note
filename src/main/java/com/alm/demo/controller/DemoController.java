@@ -5,6 +5,7 @@ import com.alm.system.authority.Authority;
 import com.alm.system.authority.AuthorityEnum;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
+import com.alm.util.RESTUtil;
 import com.sun.net.httpserver.HttpContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -77,6 +78,14 @@ public class DemoController {
     @RequestMapping("/page")
     public void page() {
         demoser.selectAll();
+    }
+
+    @RequestMapping("/try")
+    @ResponseBody
+    public String trycatch() {
+        User user=new User();
+        demoser.insertUser(user);
+        return RESTUtil.HTTP200(1, "success");
     }
 
 }

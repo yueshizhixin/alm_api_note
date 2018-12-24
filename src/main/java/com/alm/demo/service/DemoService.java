@@ -1,6 +1,7 @@
 package com.alm.demo.service;
 
 import com.alm.note.po.Note;
+import com.alm.user.po.User;
 
 import java.util.List;
 
@@ -12,4 +13,10 @@ import java.util.List;
  */
 public interface DemoService {
     List<Note> selectAll();
+
+    /**
+     * 异常测试
+     * @param u
+     */
+    void insertUser(User u);
 }

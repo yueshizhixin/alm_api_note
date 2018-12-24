@@ -4,6 +4,8 @@ import com.alm.demo.service.DemoService;
 import com.alm.note.mapper.NoteMapper;
 import com.alm.note.po.Note;
 import com.alm.note.po.NoteExample;
+import com.alm.user.mapper.UserMapper;
+import com.alm.user.po.User;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +21,17 @@ import java.util.List;
 @Service
 public class DemoServiceImpl  implements DemoService {
 
-    private final NoteMapper noteMapper;
-
     private NoteExample example;
     private NoteExample.Criteria criteria;
 
+    private final UserMapper userMapper;
+
+    private final NoteMapper noteMapper;
+
     @Autowired
-    public DemoServiceImpl(NoteMapper noteMapper) {
+    public DemoServiceImpl(NoteMapper noteMapper, UserMapper userMapper) {
         this.noteMapper = noteMapper;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -59,5 +64,15 @@ public class DemoServiceImpl  implements DemoService {
 //        }
 
         return null;
+    }
+
+    /**
+     * 异常测试
+     *
+     * @param u
+     */
+    @Override
+    public void insertUser(User u) {
+        userMapper.insert(u);
     }
 }

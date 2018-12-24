@@ -13,11 +13,23 @@ public class JSONUtil {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * json序列化
+     *
+     * @param t
+     * @param <T>
+     * @return
+     */
+    private static String empty = "{}";
+
     public static <T> String format(T t) {
         try {
+            if (t == null) {
+                return empty;
+            }
             return objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
-            return null;
+            return empty;
         }
     }
 

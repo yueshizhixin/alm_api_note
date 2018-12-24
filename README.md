@@ -2,14 +2,13 @@
 
 >[English](README.en.md)
 
-###简述
+### 简述
 - maven+springMVC+mybatis
 
 ### 版本
 - v0.0.1 注册与登录
 
-###以下
+### 以下
 - 全局try catch
 - rest
-- i18n
 
