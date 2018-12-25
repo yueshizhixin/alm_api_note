@@ -1,7 +1,8 @@
 package com.alm.system.exception;
 
 import com.alm.util.RESTUtil;
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.Arrays;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,11 +23,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final Logger LOGGER= LogManager.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(BindException.class)
     @ResponseBody
     public String handlerBindException(BindException e) {
-        System.out.println("e.getMessage() = " + e.getMessage());
-        e.printStackTrace();
+        LOGGER.error("\n===异常开始");
+        LOGGER.error(e);
+        Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
+        LOGGER.error("\n===异常结束");
         return RESTUtil.HTTP200(0,"参数绑定错误");
     }
 
@@ -32,7 +39,10 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public String handlerException(Exception e) {
-        e.printStackTrace();
+        LOGGER.error("\n===异常开始");
+        LOGGER.error(e);
+        Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
+        LOGGER.error("\n===异常结束");
         return RESTUtil.HTTP500();
     }
 
