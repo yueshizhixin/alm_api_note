@@ -1,6 +1,7 @@
 package com.alm.util;
 
 
+import com.alm.system.tip.GlobalTip;
 import com.sun.deploy.util.StringUtils;
 
 /**
@@ -44,7 +45,10 @@ public class RESTUtil {
         return format(200,ok,msg,null,1);
     }
 
+    private static String TIP500=Exception.class.getName();
+
     public static<T> String HTTP500(){
-        return format(500,0,"服务异常",null,1);
+        System.out.println("GlobalTip.ERROR = " + GlobalTip.ERROR);
+        return format(500,0, TIP500,null,1);
     }
 }

@@ -1,5 +1,6 @@
 package com.alm.system.exception;
 
+import com.alm.system.tip.GlobalTip;
 import com.alm.util.RESTUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.ws.rs.Encoded;
 import java.util.Arrays;
 
 /**
@@ -20,10 +22,12 @@ import java.util.Arrays;
  * <p>date: 2018-12-24 21:13</p>
  * <p>desc: 全局统一异常处理</p>
  */
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     private static final Logger LOGGER= LogManager.getLogger(GlobalExceptionHandler.class);
+
+    private static String BindExceptionTip=BindException.class.getName();
 
     @ExceptionHandler(BindException.class)
     @ResponseBody
@@ -32,7 +36,7 @@ public class GlobalExceptionHandler {
         LOGGER.error(e);
         Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
         LOGGER.error("\n===异常结束");
-        return RESTUtil.HTTP200(0,"参数绑定错误");
+        return RESTUtil.HTTP200(0, BindExceptionTip);
     }
 
     @ExceptionHandler(Exception.class)
@@ -45,6 +49,4 @@ public class GlobalExceptionHandler {
         LOGGER.error("\n===异常结束");
         return RESTUtil.HTTP500();
     }
-
-
 }

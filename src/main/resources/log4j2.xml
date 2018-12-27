@@ -5,7 +5,7 @@
 <configuration status="WARN" monitorInterval="60">
 
     <properties>
-        <property name="LOG_HOME">${sys:user.home}</property>
+        <property name="LOG_HOME">c:/log</property>
         <property name="PATTERN_LAYOUT">%d [%7r] %6p - %30.30c - %m \n</property>
     </properties>
 

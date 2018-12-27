@@ -16,4 +16,11 @@ public interface UserService {
      * @return 待补充
      */
     User selectUserPublicMessage(int id);
+
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    boolean signUp(User user);
 }
