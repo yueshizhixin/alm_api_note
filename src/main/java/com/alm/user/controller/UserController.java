@@ -46,7 +46,7 @@ public class UserController {
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userTag(HttpServletRequest req,@ModelAttribute User u,@RequestParam(value = "tag")String tag) {
         if ("signUp".equals(tag)) {
-            userService.signUp(u);
+            return RESTUtil.Message(userService.signUp(u));
         }
         return RESTUtil.HTTP200(u);
     }

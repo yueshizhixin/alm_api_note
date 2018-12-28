@@ -19,4 +19,6 @@ public interface DemoService {
      * @param u
      */
     void insertUser(User u);
+
+    List<User> example();
 }

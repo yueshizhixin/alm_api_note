@@ -6,6 +6,7 @@ import com.alm.note.po.Note;
 import com.alm.note.po.NoteExample;
 import com.alm.user.mapper.UserMapper;
 import com.alm.user.po.User;
+import com.alm.user.po.UserExample;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class DemoServiceImpl  implements DemoService {
 
     private NoteExample example;
     private NoteExample.Criteria criteria;
+
+    private UserExample userExample;
+    private UserExample.Criteria userCriteria;
 
     private final UserMapper userMapper;
 
@@ -75,4 +79,20 @@ public class DemoServiceImpl  implements DemoService {
     public void insertUser(User u) {
         userMapper.insert(u);
     }
+
+    @Override
+    public List<User> example() {
+        userExample=new UserExample();
+        userCriteria=userExample.createCriteria();
+        userCriteria.andEmailEqualTo("3");
+        example2();
+        return userMapper.selectByExample(userExample);
+    }
+
+    private void example2(){
+        userExample=new UserExample();
+        userCriteria=userExample.createCriteria();
+        userCriteria.andSexEqualTo(Byte.valueOf("2"));
+    }
+
 }

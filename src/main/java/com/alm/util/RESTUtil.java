@@ -2,6 +2,7 @@ package com.alm.util;
 
 
 import com.alm.system.tip.GlobalTip;
+import com.alm.system.vo.Message;
 import com.sun.deploy.util.StringUtils;
 
 /**
@@ -43,6 +44,10 @@ public class RESTUtil {
 
     public static<T> String HTTP200(int ok,String msg){
         return format(200,ok,msg,null,1);
+    }
+
+    public static String Message(Message msg){
+        return JSONUtil.format(msg);
     }
 
     private static String TIP500=Exception.class.getName();

@@ -20,16 +20,14 @@ public class JSONUtil {
      * @param <T>
      * @return
      */
-    private static String empty = "{}";
-
     public static <T> String format(T t) {
         try {
             if (t == null) {
-                return empty;
+                return null;
             }
             return objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
-            return empty;
+            return null;
         }
     }
 

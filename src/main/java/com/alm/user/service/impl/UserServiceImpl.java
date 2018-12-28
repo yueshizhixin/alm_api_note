@@ -1,18 +1,14 @@
 package com.alm.user.service.impl;
 
-import com.alm.note.mapper.NoteMapper;
+import com.alm.system.tip.GlobalTip;
+import com.alm.system.vo.Message;
 import com.alm.user.mapper.UserMapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
 import com.alm.user.service.UserService;
 import com.alm.util.DateUtil;
-import javafx.util.converter.DateStringConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import javax.inject.Inject;
-import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,9 +18,6 @@ import java.util.Date;
  */
 @Service
 public class UserServiceImpl implements UserService {
-
-    private UserExample example;
-    private UserExample.Criteria criteria;
 
     private final UserMapper userMapper;
 
@@ -51,22 +44,62 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public boolean signUp(User user) {
-        example=new UserExample();
-        String msg;
-        if(user.getPhone()!=null && !user.getPhone().trim().isEmpty()){
-            criteria=example.createCriteria();
-            criteria.andPhoneEqualTo(user.getPhone());
-            //手机号已注册
-            if(userMapper.countByExample(example)>0){
-                msg = "一个手机号只允许绑定一个账号";
-                System.out.println("msg = " + msg);
-                return false;
-            }
-        }
+    public Message signUp(User user) {
+        Message msg;
         user.setCreateTime(DateUtil.now());
         user.setLatestTime(DateUtil.now());
-        msg="ddd";
-        return true;
+
+        msg = new Message(1);
+        msg.setMsg(GlobalTip.COMM_SUCCESS);
+        return msg;
+    }
+
+    /**
+     * 检测用户唯一性
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public Message checkUserUnique(User user) {
+        Message msg = new Message();
+        if (user == null) {
+            msg.setMsg(GlobalTip.ERROR_NONE_POINTER);
+            return msg;
+        }
+        if ((user.getPhone() == null || user.getPhone().trim().isEmpty())
+                && (user.getAcc() == null || user.getAcc().trim().isEmpty())
+                && (user.getEmail() == null || user.getEmail().trim().isEmpty())
+        ) {
+            msg.setMsg(GlobalTip.USER_NONE_SIGNNAME);
+            return msg;
+        }
+
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        if (user.getAcc() != null && !user.getAcc().trim().isEmpty()) {
+            criteria.andAccEqualTo(user.getAcc());
+            if (userMapper.countByExample(example) > 0) {
+                msg.setMsg(GlobalTip.USER_EXIST_ACC);
+                return msg;
+            }
+        }
+        if (user.getPhone() != null && !user.getPhone().trim().isEmpty()) {
+            criteria.andPhoneEqualTo(user.getPhone());
+            if (userMapper.countByExample(example) > 0) {
+                msg.setMsg(GlobalTip.USER_EXIST_PHONE);
+                return msg;
+            }
+        }
+        if (user.getEmail() != null && !user.getEmail().trim().isEmpty()) {
+            criteria.andEmailEqualTo(user.getEmail());
+            if (userMapper.countByExample(example) > 0) {
+                msg.setMsg(GlobalTip.USER_EXIST_EMAIL);
+                return msg;
+            }
+        }
+
+        msg.setOk(1);
+        return msg;
     }
 }

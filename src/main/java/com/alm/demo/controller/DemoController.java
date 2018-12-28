@@ -88,4 +88,10 @@ public class DemoController {
         return RESTUtil.HTTP200(1, "success");
     }
 
+    @RequestMapping("/example")
+    @ResponseBody
+    public String example() {
+        return RESTUtil.HTTP200(demoser.example());
+    }
+
 }

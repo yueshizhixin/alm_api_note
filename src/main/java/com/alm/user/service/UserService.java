@@ -1,5 +1,6 @@
 package com.alm.user.service;
 
+import com.alm.system.vo.Message;
 import com.alm.user.po.User;
 
 /**
@@ -22,5 +23,12 @@ public interface UserService {
      * @param user
      * @return
      */
-    boolean signUp(User user);
+    Message signUp(User user);
+
+    /**
+     * 检测用户唯一性
+     * @param user
+     * @return
+     */
+    Message checkUserUnique(User user);
 }
