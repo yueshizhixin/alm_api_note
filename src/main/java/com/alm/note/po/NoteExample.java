@@ -73,7 +73,7 @@ public class NoteExample {
     }
 
     /**
-     * 笔记表 2018-12-19
+     * 笔记表 2018-12-29
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -126,52 +126,52 @@ public class NoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -306,73 +306,73 @@ public class NoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andHotContentIsNull() {
-            addCriterion("hotContent is null");
+        public Criteria andProfileIsNull() {
+            addCriterion("profile is null");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentIsNotNull() {
-            addCriterion("hotContent is not null");
+        public Criteria andProfileIsNotNull() {
+            addCriterion("profile is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentEqualTo(String value) {
-            addCriterion("hotContent =", value, "hotContent");
+        public Criteria andProfileEqualTo(String value) {
+            addCriterion("profile =", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentNotEqualTo(String value) {
-            addCriterion("hotContent <>", value, "hotContent");
+        public Criteria andProfileNotEqualTo(String value) {
+            addCriterion("profile <>", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentGreaterThan(String value) {
-            addCriterion("hotContent >", value, "hotContent");
+        public Criteria andProfileGreaterThan(String value) {
+            addCriterion("profile >", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentGreaterThanOrEqualTo(String value) {
-            addCriterion("hotContent >=", value, "hotContent");
+        public Criteria andProfileGreaterThanOrEqualTo(String value) {
+            addCriterion("profile >=", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentLessThan(String value) {
-            addCriterion("hotContent <", value, "hotContent");
+        public Criteria andProfileLessThan(String value) {
+            addCriterion("profile <", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentLessThanOrEqualTo(String value) {
-            addCriterion("hotContent <=", value, "hotContent");
+        public Criteria andProfileLessThanOrEqualTo(String value) {
+            addCriterion("profile <=", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentLike(String value) {
-            addCriterion("hotContent like", value, "hotContent");
+        public Criteria andProfileLike(String value) {
+            addCriterion("profile like", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentNotLike(String value) {
-            addCriterion("hotContent not like", value, "hotContent");
+        public Criteria andProfileNotLike(String value) {
+            addCriterion("profile not like", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentIn(List<String> values) {
-            addCriterion("hotContent in", values, "hotContent");
+        public Criteria andProfileIn(List<String> values) {
+            addCriterion("profile in", values, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentNotIn(List<String> values) {
-            addCriterion("hotContent not in", values, "hotContent");
+        public Criteria andProfileNotIn(List<String> values) {
+            addCriterion("profile not in", values, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentBetween(String value1, String value2) {
-            addCriterion("hotContent between", value1, value2, "hotContent");
+        public Criteria andProfileBetween(String value1, String value2) {
+            addCriterion("profile between", value1, value2, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andHotContentNotBetween(String value1, String value2) {
-            addCriterion("hotContent not between", value1, value2, "hotContent");
+        public Criteria andProfileNotBetween(String value1, String value2) {
+            addCriterion("profile not between", value1, value2, "profile");
             return (Criteria) this;
         }
 
@@ -505,6 +505,66 @@ public class NoteExample {
             addCriterion("commenCount not between", value1, value2, "commenCount");
             return (Criteria) this;
         }
+
+        public Criteria andShareCountIsNull() {
+            addCriterion("shareCount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountIsNotNull() {
+            addCriterion("shareCount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountEqualTo(Integer value) {
+            addCriterion("shareCount =", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountNotEqualTo(Integer value) {
+            addCriterion("shareCount <>", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountGreaterThan(Integer value) {
+            addCriterion("shareCount >", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shareCount >=", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountLessThan(Integer value) {
+            addCriterion("shareCount <", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountLessThanOrEqualTo(Integer value) {
+            addCriterion("shareCount <=", value, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountIn(List<Integer> values) {
+            addCriterion("shareCount in", values, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountNotIn(List<Integer> values) {
+            addCriterion("shareCount not in", values, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountBetween(Integer value1, Integer value2) {
+            addCriterion("shareCount between", value1, value2, "shareCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andShareCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("shareCount not between", value1, value2, "shareCount");
+            return (Criteria) this;
+        }
     }
 
     /**
@@ -518,7 +578,7 @@ public class NoteExample {
     }
 
     /**
-     * 笔记表 2018-12-19
+     * 笔记表 2018-12-29
      */
     public static class Criterion {
         private String condition;

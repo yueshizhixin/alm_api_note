@@ -39,7 +39,7 @@ public class UserController {
         if (user != null) {
             return RESTUtil.HTTP200(user);
         } else {
-            return RESTUtil.HTTP200(0, GlobalTip.DATA_NONE);
+            return RESTUtil.HTTP200(0, GlobalTip.COMM_NONE);
         }
     }
 

@@ -11,21 +11,36 @@ import java.util.Date;
  * <p>desc: 日期</p>
  */
 public class DateUtil {
+    private static String defaultTime = "1900-01-01 00:00:00";
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    /**
+     * 获取当前时间
+     *
+     * @return
+     */
     public static String nowString() {
         return sdf.format(new Date());
     }
 
     /**
      * 获取当前时间
+     *
      * @return
      */
     public static Date now() {
+        return new Date();
+    }
+
+    public static String defaultTimeString() {
+        return defaultTime;
+    }
+
+    public static Date defaultTime() {
         try {
-            return sdf.parse(nowString());
+            return sdf.parse(defaultTime);
         } catch (Exception e) {
-            return new Date();
+            return null;
         }
     }
 }

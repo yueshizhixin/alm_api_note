@@ -43,7 +43,7 @@ public class DemoServiceImpl  implements DemoService {
 
         example=new NoteExample();
         criteria=example.createCriteria();
-        criteria.andIdGreaterThan(3);
+//        criteria.andIdGreaterThan(3);
         PageHelper.startPage(0, 5);
         List<Note> list=noteMapper.selectByExample(example);
 //        PageInfo page = new PageInfo(list);
@@ -92,7 +92,7 @@ public class DemoServiceImpl  implements DemoService {
     private void example2(){
         userExample=new UserExample();
         userCriteria=userExample.createCriteria();
-        userCriteria.andSexEqualTo(Byte.valueOf("2"));
+        userCriteria.andSexEqualTo(2);
     }
 
 }

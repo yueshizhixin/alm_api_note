@@ -10,7 +10,7 @@ public interface NoteMapper {
 
     int deleteByExample(NoteExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Note record);
 
@@ -18,7 +18,7 @@ public interface NoteMapper {
 
     List<Note> selectByExample(NoteExample example);
 
-    Note selectByPrimaryKey(Integer id);
+    Note selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Note record, @Param("example") NoteExample example);
 

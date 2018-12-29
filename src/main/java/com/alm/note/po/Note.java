@@ -3,13 +3,13 @@ package com.alm.note.po;
 /**
  <p>table  笔记表</p>
  <p>author lishuai</p>
- <p>time   2018-12-19</p>
+ <p>time   2018-12-29</p>
 */
 public class Note {
     /**
      * 笔记id
      */
-    private Integer id;
+    private Long id;
 
     /**
      * 用户id
@@ -24,10 +24,10 @@ public class Note {
     /**
      * 概要
      */
-    private String hotContent;
+    private String profile;
 
     /**
-     * 
+     * 内容
      */
     private String content;
 
@@ -37,10 +37,15 @@ public class Note {
     private Integer commenCount;
 
     /**
+     * 分享数
+     */
+    private Integer shareCount;
+
+    /**
      * 笔记id
      * @return id 笔记id
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -48,7 +53,7 @@ public class Note {
      * 笔记id
      * @param id 笔记id
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,31 +91,31 @@ public class Note {
 
     /**
      * 概要
-     * @return hotContent 概要
+     * @return profile 概要
      */
-    public String getHotContent() {
-        return hotContent;
+    public String getProfile() {
+        return profile;
     }
 
     /**
      * 概要
-     * @param hotContent 概要
+     * @param profile 概要
      */
-    public void setHotContent(String hotContent) {
-        this.hotContent = hotContent == null ? null : hotContent.trim();
+    public void setProfile(String profile) {
+        this.profile = profile == null ? null : profile.trim();
     }
 
     /**
-     * 
-     * @return content 
+     * 内容
+     * @return content 内容
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * 
-     * @param content 
+     * 内容
+     * @param content 内容
      */
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
@@ -130,5 +135,21 @@ public class Note {
      */
     public void setCommenCount(Integer commenCount) {
         this.commenCount = commenCount;
+    }
+
+    /**
+     * 分享数
+     * @return shareCount 分享数
+     */
+    public Integer getShareCount() {
+        return shareCount;
+    }
+
+    /**
+     * 分享数
+     * @param shareCount 分享数
+     */
+    public void setShareCount(Integer shareCount) {
+        this.shareCount = shareCount;
     }
 }

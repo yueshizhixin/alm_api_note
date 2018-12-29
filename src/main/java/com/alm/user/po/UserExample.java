@@ -74,7 +74,7 @@ public class UserExample {
     }
 
     /**
-     * 用户表 2018-12-18
+     * 用户表 2018-12-29
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -127,52 +127,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -397,52 +397,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeEqualTo(Byte value) {
+        public Criteria andSignTypeEqualTo(Integer value) {
             addCriterion("signType =", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeNotEqualTo(Byte value) {
+        public Criteria andSignTypeNotEqualTo(Integer value) {
             addCriterion("signType <>", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeGreaterThan(Byte value) {
+        public Criteria andSignTypeGreaterThan(Integer value) {
             addCriterion("signType >", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeGreaterThanOrEqualTo(Byte value) {
+        public Criteria andSignTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("signType >=", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeLessThan(Byte value) {
+        public Criteria andSignTypeLessThan(Integer value) {
             addCriterion("signType <", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeLessThanOrEqualTo(Byte value) {
+        public Criteria andSignTypeLessThanOrEqualTo(Integer value) {
             addCriterion("signType <=", value, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeIn(List<Byte> values) {
+        public Criteria andSignTypeIn(List<Integer> values) {
             addCriterion("signType in", values, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeNotIn(List<Byte> values) {
+        public Criteria andSignTypeNotIn(List<Integer> values) {
             addCriterion("signType not in", values, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeBetween(Byte value1, Byte value2) {
+        public Criteria andSignTypeBetween(Integer value1, Integer value2) {
             addCriterion("signType between", value1, value2, "signType");
             return (Criteria) this;
         }
 
-        public Criteria andSignTypeNotBetween(Byte value1, Byte value2) {
+        public Criteria andSignTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("signType not between", value1, value2, "signType");
             return (Criteria) this;
         }
@@ -597,52 +597,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSexEqualTo(Byte value) {
+        public Criteria andSexEqualTo(Integer value) {
             addCriterion("sex =", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotEqualTo(Byte value) {
+        public Criteria andSexNotEqualTo(Integer value) {
             addCriterion("sex <>", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThan(Byte value) {
+        public Criteria andSexGreaterThan(Integer value) {
             addCriterion("sex >", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThanOrEqualTo(Byte value) {
+        public Criteria andSexGreaterThanOrEqualTo(Integer value) {
             addCriterion("sex >=", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThan(Byte value) {
+        public Criteria andSexLessThan(Integer value) {
             addCriterion("sex <", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThanOrEqualTo(Byte value) {
+        public Criteria andSexLessThanOrEqualTo(Integer value) {
             addCriterion("sex <=", value, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexIn(List<Byte> values) {
+        public Criteria andSexIn(List<Integer> values) {
             addCriterion("sex in", values, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotIn(List<Byte> values) {
+        public Criteria andSexNotIn(List<Integer> values) {
             addCriterion("sex not in", values, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexBetween(Byte value1, Byte value2) {
+        public Criteria andSexBetween(Integer value1, Integer value2) {
             addCriterion("sex between", value1, value2, "sex");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotBetween(Byte value1, Byte value2) {
+        public Criteria andSexNotBetween(Integer value1, Integer value2) {
             addCriterion("sex not between", value1, value2, "sex");
             return (Criteria) this;
         }
@@ -657,62 +657,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayEqualTo(String value) {
+        public Criteria andBrithdayEqualTo(Date value) {
             addCriterion("brithday =", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayNotEqualTo(String value) {
+        public Criteria andBrithdayNotEqualTo(Date value) {
             addCriterion("brithday <>", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayGreaterThan(String value) {
+        public Criteria andBrithdayGreaterThan(Date value) {
             addCriterion("brithday >", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayGreaterThanOrEqualTo(String value) {
+        public Criteria andBrithdayGreaterThanOrEqualTo(Date value) {
             addCriterion("brithday >=", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayLessThan(String value) {
+        public Criteria andBrithdayLessThan(Date value) {
             addCriterion("brithday <", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayLessThanOrEqualTo(String value) {
+        public Criteria andBrithdayLessThanOrEqualTo(Date value) {
             addCriterion("brithday <=", value, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayLike(String value) {
-            addCriterion("brithday like", value, "brithday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBrithdayNotLike(String value) {
-            addCriterion("brithday not like", value, "brithday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBrithdayIn(List<String> values) {
+        public Criteria andBrithdayIn(List<Date> values) {
             addCriterion("brithday in", values, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayNotIn(List<String> values) {
+        public Criteria andBrithdayNotIn(List<Date> values) {
             addCriterion("brithday not in", values, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayBetween(String value1, String value2) {
+        public Criteria andBrithdayBetween(Date value1, Date value2) {
             addCriterion("brithday between", value1, value2, "brithday");
             return (Criteria) this;
         }
 
-        public Criteria andBrithdayNotBetween(String value1, String value2) {
+        public Criteria andBrithdayNotBetween(Date value1, Date value2) {
             addCriterion("brithday not between", value1, value2, "brithday");
             return (Criteria) this;
         }
@@ -727,52 +717,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andVipLvEqualTo(Byte value) {
+        public Criteria andVipLvEqualTo(Integer value) {
             addCriterion("vipLv =", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvNotEqualTo(Byte value) {
+        public Criteria andVipLvNotEqualTo(Integer value) {
             addCriterion("vipLv <>", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvGreaterThan(Byte value) {
+        public Criteria andVipLvGreaterThan(Integer value) {
             addCriterion("vipLv >", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvGreaterThanOrEqualTo(Byte value) {
+        public Criteria andVipLvGreaterThanOrEqualTo(Integer value) {
             addCriterion("vipLv >=", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvLessThan(Byte value) {
+        public Criteria andVipLvLessThan(Integer value) {
             addCriterion("vipLv <", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvLessThanOrEqualTo(Byte value) {
+        public Criteria andVipLvLessThanOrEqualTo(Integer value) {
             addCriterion("vipLv <=", value, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvIn(List<Byte> values) {
+        public Criteria andVipLvIn(List<Integer> values) {
             addCriterion("vipLv in", values, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvNotIn(List<Byte> values) {
+        public Criteria andVipLvNotIn(List<Integer> values) {
             addCriterion("vipLv not in", values, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvBetween(Byte value1, Byte value2) {
+        public Criteria andVipLvBetween(Integer value1, Integer value2) {
             addCriterion("vipLv between", value1, value2, "vipLv");
             return (Criteria) this;
         }
 
-        public Criteria andVipLvNotBetween(Byte value1, Byte value2) {
+        public Criteria andVipLvNotBetween(Integer value1, Integer value2) {
             addCriterion("vipLv not between", value1, value2, "vipLv");
             return (Criteria) this;
         }
@@ -907,52 +897,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsSignEqualTo(Byte value) {
+        public Criteria andIsSignEqualTo(Integer value) {
             addCriterion("isSign =", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignNotEqualTo(Byte value) {
+        public Criteria andIsSignNotEqualTo(Integer value) {
             addCriterion("isSign <>", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignGreaterThan(Byte value) {
+        public Criteria andIsSignGreaterThan(Integer value) {
             addCriterion("isSign >", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIsSignGreaterThanOrEqualTo(Integer value) {
             addCriterion("isSign >=", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignLessThan(Byte value) {
+        public Criteria andIsSignLessThan(Integer value) {
             addCriterion("isSign <", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignLessThanOrEqualTo(Byte value) {
+        public Criteria andIsSignLessThanOrEqualTo(Integer value) {
             addCriterion("isSign <=", value, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignIn(List<Byte> values) {
+        public Criteria andIsSignIn(List<Integer> values) {
             addCriterion("isSign in", values, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignNotIn(List<Byte> values) {
+        public Criteria andIsSignNotIn(List<Integer> values) {
             addCriterion("isSign not in", values, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignBetween(Byte value1, Byte value2) {
+        public Criteria andIsSignBetween(Integer value1, Integer value2) {
             addCriterion("isSign between", value1, value2, "isSign");
             return (Criteria) this;
         }
 
-        public Criteria andIsSignNotBetween(Byte value1, Byte value2) {
+        public Criteria andIsSignNotBetween(Integer value1, Integer value2) {
             addCriterion("isSign not between", value1, value2, "isSign");
             return (Criteria) this;
         }
@@ -969,7 +959,7 @@ public class UserExample {
     }
 
     /**
-     * 用户表 2018-12-18
+     * 用户表 2018-12-29
      */
     public static class Criterion {
         private String condition;

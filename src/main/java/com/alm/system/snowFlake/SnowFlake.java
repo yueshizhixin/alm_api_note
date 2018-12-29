@@ -1,4 +1,8 @@
-package com.alm.util;
+package com.alm.system.snowFlake;
+
+import com.alm.util.PropSnowFlakeUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,11 +20,11 @@ package com.alm.util;
  * 加起来刚好64位 为Long型<br>
  * SnowFlake的优点 整体上按照时间自增排序 并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)
  */
-public class SnowFlakeUtil {
+public class SnowFlake {
     /**
-     * 开始时间戳 (2015-01-01)
+     * 开始时间戳 (2018-12-29) 1546088700092
      */
-    private final long twepoch = 1420041600000L;
+    private final long startTimeStamp = 1546088700092L;
 
     /**
      * 机器id所占的位数
@@ -65,7 +69,7 @@ public class SnowFlakeUtil {
     /**
      * 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095)
      */
-    private final long sequenceMask = -1L ^ (-1L << sequenceBits);
+    private final long sequenceMask = ~(-1L << sequenceBits);
 
     /**
      * 工作机器ID(0~31)
@@ -87,33 +91,37 @@ public class SnowFlakeUtil {
      */
     private long lastTimestamp = -1L;
 
-    //==============================Constructors=====================================
+    private SnowFlake() {
 
-    /**
-     * 构造函数
-     *
-     * @param workerId     工作ID (0~31)
-     * @param datacenterId 数据中心ID (0~31)
-     */
-    public SnowFlakeUtil(long workerId, long datacenterId) {
-        if (workerId > maxWorkerId || workerId < 0) {
-            throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
+        Integer _centerId = PropSnowFlakeUtil.getCenterId();
+        Integer _workerId = PropSnowFlakeUtil.getWorkerId();
+
+        if (_centerId == null || _centerId > maxDatacenterId || _centerId < 0
+                || _workerId == null || _workerId > maxWorkerId || _workerId < 0
+        ) {
+            Logger logger = LogManager.getLogger(SnowFlake.class);
+            logger.error("===严重错误=========");
+            logger.error("===snowFlake配置错误");
+            logger.error("===================");
+            System.exit(-1);
         }
-        if (datacenterId > maxDatacenterId || datacenterId < 0) {
-            throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDatacenterId));
-        }
-        this.workerId = workerId;
-        this.datacenterId = datacenterId;
+
+        this.workerId = _workerId;
+        this.datacenterId = _centerId;
     }
 
-    // ==============================Methods==========================================
+    private static SnowFlake snowFlake=new SnowFlake();
+
+    public static SnowFlake instance(){
+        return snowFlake;
+    }
 
     /**
      * 获得下一个ID (该方法是线程安全的)
      *
      * @return SnowflakeId
      */
-    public synchronized long nextId() {
+    public synchronized long newId() {
         long timestamp = timeGen();
 
         //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
@@ -139,11 +147,7 @@ public class SnowFlakeUtil {
         //上次生成ID的时间戳
         lastTimestamp = timestamp;
 
-        //移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - twepoch) << timestampLeftShift) //
-                | (datacenterId << datacenterIdShift) //
-                | (workerId << workerIdShift) //
-                | sequence;
+        return ((timestamp - startTimeStamp) << timestampLeftShift) | (datacenterId << datacenterIdShift) | (workerId << workerIdShift) | sequence;
     }
 
     /**
@@ -152,7 +156,7 @@ public class SnowFlakeUtil {
      * @param lastTimestamp 上次生成ID的时间戳
      * @return 当前时间戳
      */
-    protected long tilNextMillis(long lastTimestamp) {
+    private long tilNextMillis(long lastTimestamp) {
         long timestamp = timeGen();
         while (timestamp <= lastTimestamp) {
             timestamp = timeGen();
@@ -165,18 +169,8 @@ public class SnowFlakeUtil {
      *
      * @return 当前时间(毫秒)
      */
-    protected long timeGen() {
+    private long timeGen() {
         return System.currentTimeMillis();
     }
 
-    //==============================Test=============================================
-    /** 测试 */
-//        public static void main(String[] args) {
-//            SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
-//            for (int i = 0; i < 1000; i++) {
-//                long id = idWorker.nextId();
-//                System.out.println(Long.toBinaryString(id));
-//                System.out.println(id);
-//            }
-//        }
 }

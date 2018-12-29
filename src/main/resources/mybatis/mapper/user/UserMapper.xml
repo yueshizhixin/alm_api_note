@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alm.user.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.alm.user.po.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="acc" jdbcType="VARCHAR" property="acc" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="signType" jdbcType="TINYINT" property="signType" />
+    <result column="signType" jdbcType="INTEGER" property="signType" />
     <result column="pwd" jdbcType="VARCHAR" property="pwd" />
     <result column="userName" jdbcType="VARCHAR" property="userName" />
-    <result column="sex" jdbcType="TINYINT" property="sex" />
-    <result column="brithday" jdbcType="VARCHAR" property="brithday" />
-    <result column="vipLv" jdbcType="TINYINT" property="vipLv" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="brithday" jdbcType="TIMESTAMP" property="brithday" />
+    <result column="vipLv" jdbcType="INTEGER" property="vipLv" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="latestTime" jdbcType="TIMESTAMP" property="latestTime" />
-    <result column="isSign" jdbcType="TINYINT" property="isSign" />
+    <result column="isSign" jdbcType="INTEGER" property="isSign" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -92,15 +92,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.alm.user.po.UserExample">
     delete from t_user
@@ -114,13 +114,13 @@
       userName, sex, brithday, 
       vipLv, createTime, latestTime, 
       isSign)
-    values (#{id,jdbcType=INTEGER}, #{acc,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{signType,jdbcType=TINYINT}, #{pwd,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{brithday,jdbcType=VARCHAR}, 
-      #{vipLv,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{latestTime,jdbcType=TIMESTAMP}, 
-      #{isSign,jdbcType=TINYINT})
+    values (#{id,jdbcType=BIGINT}, #{acc,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{signType,jdbcType=INTEGER}, #{pwd,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{brithday,jdbcType=TIMESTAMP}, 
+      #{vipLv,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{latestTime,jdbcType=TIMESTAMP}, 
+      #{isSign,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.alm.user.po.User" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.alm.user.po.User">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -165,7 +165,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="acc != null">
         #{acc,jdbcType=VARCHAR},
@@ -177,7 +177,7 @@
         #{email,jdbcType=VARCHAR},
       </if>
       <if test="signType != null">
-        #{signType,jdbcType=TINYINT},
+        #{signType,jdbcType=INTEGER},
       </if>
       <if test="pwd != null">
         #{pwd,jdbcType=VARCHAR},
@@ -186,13 +186,13 @@
         #{userName,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        #{sex,jdbcType=TINYINT},
+        #{sex,jdbcType=INTEGER},
       </if>
       <if test="brithday != null">
-        #{brithday,jdbcType=VARCHAR},
+        #{brithday,jdbcType=TIMESTAMP},
       </if>
       <if test="vipLv != null">
-        #{vipLv,jdbcType=TINYINT},
+        #{vipLv,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -201,7 +201,7 @@
         #{latestTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null">
-        #{isSign,jdbcType=TINYINT},
+        #{isSign,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -215,7 +215,7 @@
     update t_user
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.acc != null">
         acc = #{record.acc,jdbcType=VARCHAR},
@@ -227,7 +227,7 @@
         email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.signType != null">
-        signType = #{record.signType,jdbcType=TINYINT},
+        signType = #{record.signType,jdbcType=INTEGER},
       </if>
       <if test="record.pwd != null">
         pwd = #{record.pwd,jdbcType=VARCHAR},
@@ -236,13 +236,13 @@
         userName = #{record.userName,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null">
-        sex = #{record.sex,jdbcType=TINYINT},
+        sex = #{record.sex,jdbcType=INTEGER},
       </if>
       <if test="record.brithday != null">
-        brithday = #{record.brithday,jdbcType=VARCHAR},
+        brithday = #{record.brithday,jdbcType=TIMESTAMP},
       </if>
       <if test="record.vipLv != null">
-        vipLv = #{record.vipLv,jdbcType=TINYINT},
+        vipLv = #{record.vipLv,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
@@ -251,7 +251,7 @@
         latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSign != null">
-        isSign = #{record.isSign,jdbcType=TINYINT},
+        isSign = #{record.isSign,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -260,19 +260,19 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update t_user
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       acc = #{record.acc,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      signType = #{record.signType,jdbcType=TINYINT},
+      signType = #{record.signType,jdbcType=INTEGER},
       pwd = #{record.pwd,jdbcType=VARCHAR},
       userName = #{record.userName,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=TINYINT},
-      brithday = #{record.brithday,jdbcType=VARCHAR},
-      vipLv = #{record.vipLv,jdbcType=TINYINT},
+      sex = #{record.sex,jdbcType=INTEGER},
+      brithday = #{record.brithday,jdbcType=TIMESTAMP},
+      vipLv = #{record.vipLv,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
-      isSign = #{record.isSign,jdbcType=TINYINT}
+      isSign = #{record.isSign,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -290,7 +290,7 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="signType != null">
-        signType = #{signType,jdbcType=TINYINT},
+        signType = #{signType,jdbcType=INTEGER},
       </if>
       <if test="pwd != null">
         pwd = #{pwd,jdbcType=VARCHAR},
@@ -299,13 +299,13 @@
         userName = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        sex = #{sex,jdbcType=TINYINT},
+        sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="brithday != null">
-        brithday = #{brithday,jdbcType=VARCHAR},
+        brithday = #{brithday,jdbcType=TIMESTAMP},
       </if>
       <if test="vipLv != null">
-        vipLv = #{vipLv,jdbcType=TINYINT},
+        vipLv = #{vipLv,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -314,25 +314,25 @@
         latestTime = #{latestTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null">
-        isSign = #{isSign,jdbcType=TINYINT},
+        isSign = #{isSign,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.alm.user.po.User">
     update t_user
     set acc = #{acc,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      signType = #{signType,jdbcType=TINYINT},
+      signType = #{signType,jdbcType=INTEGER},
       pwd = #{pwd,jdbcType=VARCHAR},
       userName = #{userName,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=TINYINT},
-      brithday = #{brithday,jdbcType=VARCHAR},
-      vipLv = #{vipLv,jdbcType=TINYINT},
+      sex = #{sex,jdbcType=INTEGER},
+      brithday = #{brithday,jdbcType=TIMESTAMP},
+      vipLv = #{vipLv,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       latestTime = #{latestTime,jdbcType=TIMESTAMP},
-      isSign = #{isSign,jdbcType=TINYINT}
-    where id = #{id,jdbcType=INTEGER}
+      isSign = #{isSign,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

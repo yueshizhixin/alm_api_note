@@ -1,5 +1,6 @@
 package com.alm.user.service.impl;
 
+import com.alm.system.snowFlake.SnowFlake;
 import com.alm.system.tip.GlobalTip;
 import com.alm.system.vo.Message;
 import com.alm.user.mapper.UserMapper;
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
      * @return 待补充
      */
     @Override
-    public User selectUserPublicMessage(int id) {
+    public User selectUserPublicMessage(long id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
@@ -98,7 +99,6 @@ public class UserServiceImpl implements UserService {
                 return msg;
             }
         }
-
         msg.setOk(1);
         return msg;
     }

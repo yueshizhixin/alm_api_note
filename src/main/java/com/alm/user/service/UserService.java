@@ -16,7 +16,7 @@ public interface UserService {
      * @param id 主键
      * @return 待补充
      */
-    User selectUserPublicMessage(int id);
+    User selectUserPublicMessage(long id);
 
     /**
      * 用户注册
