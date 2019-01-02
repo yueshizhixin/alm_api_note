@@ -2,6 +2,7 @@ package com.alm.user.service;
 
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,7 +24,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    Message signUp(User user);
+    Message insertUserSignUp(User user);
 
     /**
      * 检测用户唯一性

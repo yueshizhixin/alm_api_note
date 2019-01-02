@@ -8,8 +8,10 @@ package com.alm.system.tip;
  */
 interface UserTip {
     String USER_NONE_SIGNNAME = "手机号、账号、邮箱皆为空";
+    String USER_NONE_SIGNTYPE = "注册方式非法";
+    String USER_NONE_PWD = "密码为空";
 
-    String USER_EXIST_ACC="账号已存在";
-    String USER_EXIST_PHONE="手机号已存在";
-    String USER_EXIST_EMAIL="邮箱已存在";
+    String USER_EXIST_ACC = "账号已存在";
+    String USER_EXIST_PHONE = "手机号已存在";
+    String USER_EXIST_EMAIL = "邮箱已存在";
 }
