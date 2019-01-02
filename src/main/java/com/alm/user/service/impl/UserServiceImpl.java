@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
      * @return 待补充
      */
     @Override
-    public User selectUserPublicMessage(long id) {
+    public User selectPublicMessage(long id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Message insertUserSignUp(User user) {
-        Message msg = checkUserUnique(user);
+    public Message insertSignUp(User user) {
+        Message msg = checkUnique(user);
 
         //未通过校验
         if (msg.getOk() == 0) {
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Message checkUserUnique(User user) {
+    public Message checkUnique(User user) {
         Message msg = new Message();
         if (user == null) {
             msg.setMsg(GlobalTip.ERROR_NONE_POINTER);

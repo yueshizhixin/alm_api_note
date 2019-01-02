@@ -17,19 +17,19 @@ public interface UserService {
      * @param id 主键
      * @return 待补充
      */
-    User selectUserPublicMessage(long id);
+    User selectPublicMessage(long id);
 
     /**
      * 用户注册
      * @param user
      * @return
      */
-    Message insertUserSignUp(User user);
+    Message insertSignUp(User user);
 
     /**
      * 检测用户唯一性
      * @param user
      * @return
      */
-    Message checkUserUnique(User user);
+    Message checkUnique(User user);
 }

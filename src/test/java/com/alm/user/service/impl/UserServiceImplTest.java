@@ -24,7 +24,7 @@ public class UserServiceImplTest {
 
     @Test
     public void selectUserPublicMessage() {
-        assertEquals(Optional.ofNullable(6291465487100411904L), java.util.Optional.ofNullable(userService.selectUserPublicMessage(6291465487100411904L).getId()));
+        assertEquals(Optional.ofNullable(6291465487100411904L), java.util.Optional.ofNullable(userService.selectPublicMessage(6291465487100411904L).getId()));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class UserServiceImplTest {
         user.setSignType(2);
         user.setAcc("333");
         user.setPhone("affa");
-        Message msg=userService.checkUserUnique(user);
+        Message msg=userService.checkUnique(user);
         System.out.println(msg.getOk());
         System.out.println(msg.getMsg());
     }
@@ -48,7 +48,7 @@ public class UserServiceImplTest {
         user.setPhone("13155556666");
         user.setPwd("asdf");
         user.setId(SnowFlake.instance().newId());
-        Message msg=userService.insertUserSignUp(user);
+        Message msg=userService.insertSignUp(user);
         System.out.println(msg.getOk());
         System.out.println(msg.getMsg());
     }
