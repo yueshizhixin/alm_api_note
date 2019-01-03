@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
  * <p>desc: </p>
  */
 @Controller
-@RequestMapping("/demo")
+@RequestMapping("/api/v1/demo")
 public class DemoController {
 
     private final DemoService demoser;
@@ -51,6 +52,12 @@ public class DemoController {
     @RequestMapping("/d2")
     @ResponseBody
     public String test2(HttpServletRequest req){
+        return "/test/t2";
+    }
+
+    @RequestMapping(value = "/d22",method = {RequestMethod.POST})
+    @ResponseBody
+    public String test22(HttpServletRequest req){
         return "/test/t2";
     }
 

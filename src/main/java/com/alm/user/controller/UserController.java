@@ -3,6 +3,7 @@ package com.alm.user.controller;
 import com.alm.system.tip.GlobalTip;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
+import com.alm.util.JSONUtil;
 import com.alm.util.RESTUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +25,7 @@ import java.util.Date;
  * <p>desc: </p>
  */
 @RestController
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -33,9 +35,10 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ResponseBody
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String getUser(HttpServletRequest req,@ModelAttribute User u) {
-        User user = userService.selectUserPublicMessage(u.getId());
+        User user = userService.selectPublicMessage(u.getId());
         if (user != null) {
             return RESTUtil.HTTP200(user);
         } else {
@@ -43,10 +46,11 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @ResponseBody
+    @RequestMapping(value = "/user", method = {RequestMethod.POST})
     public String userTag(HttpServletRequest req,@ModelAttribute User u,@RequestParam(value = "tag")String tag) {
         if ("signUp".equals(tag)) {
-            return RESTUtil.Message(userService.insertUserSignUp(u));
+            return RESTUtil.Message(userService.insertSignUp(u));
         }
         return RESTUtil.HTTP200(u);
     }

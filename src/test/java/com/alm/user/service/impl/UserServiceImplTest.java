@@ -23,7 +23,7 @@ public class UserServiceImplTest {
     private UserService userService;
 
     @Test
-    public void selectUserPublicMessage() {
+    public void selectPublicMessage() {
         assertEquals(Optional.ofNullable(6291465487100411904L), java.util.Optional.ofNullable(userService.selectPublicMessage(6291465487100411904L).getId()));
     }
 

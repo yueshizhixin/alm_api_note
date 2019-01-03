@@ -49,16 +49,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--  ViewResolver config = -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <!--网页文件存放位置-->
-        <property name="prefix" value="/WEB-INF/view"/>
-        <!--相当于url后缀加上.jsp-->
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-
     <mvc:interceptors>
         <!-- 权限认证拦截器 -->
         <mvc:interceptor>
@@ -67,4 +57,21 @@
             <bean class="com.alm.system.authority.AuthorityAnnotationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <mvc:cors>
+        <mvc:mapping path="/api/**"
+                     allowed-origins="http://127.0.0.1"
+                     allowed-methods="*"
+                     allow-credentials="true"
+        />
+    </mvc:cors>
+
+    <!--  ViewResolver config = -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <!--网页文件存放位置-->
+        <property name="prefix" value="/WEB-INF/view"/>
+        <!--相当于url后缀加上.jsp-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>
