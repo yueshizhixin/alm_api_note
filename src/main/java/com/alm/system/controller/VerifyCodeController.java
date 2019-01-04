@@ -3,6 +3,7 @@ package com.alm.system.controller;
 import com.alm.system.snowFlake.SnowFlake;
 import com.alm.util.VerifyCodeUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * <p>desc: 验证码</p>
  */
 @RestController
+@RequestMapping("/api/v1")
 public class VerifyCodeController {
 
     /**
@@ -23,7 +25,7 @@ public class VerifyCodeController {
      * @param req
      * @param res
      */
-    @RequestMapping("/imgVerify")
+    @RequestMapping(value="/imgVerify",method = {RequestMethod.GET})
     public void geneCode(HttpServletRequest req, HttpServletResponse res) {
         res.setHeader("Pragma", "No-cache");
         res.setHeader("Cache-Control", "no-cache");
