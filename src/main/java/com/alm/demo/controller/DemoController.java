@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by IntelliJ IDEA.
@@ -75,10 +76,11 @@ public class DemoController {
         return "/test/t1";
     }
 
-    @RequestMapping("/add")
-    public String add(HttpServletRequest req) {
-        User user = new User();
-        user.setPhone("13155556666");
+    @RequestMapping(value = "/add",method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String add(HttpServletRequest req,HttpSession session) {
+        req.getSession().setAttribute("aa","sdfsd");
+
         return "/test/t1";
     }
 

@@ -24,6 +24,10 @@ public class Message {
         this.ok = ok;
     }
 
+    public Message(String msg) {
+        this.msg = msg;
+    }
+
     public Message(int ok, String msg) {
         this.ok = ok;
         this.msg = msg;

@@ -13,6 +13,7 @@ interface CommonTip {
 
     String COMM_NONE = "无数据";
 
+    String COMM_PARAM_FAIL = "参数错误";
 
-
+    String CAPTCHAT_ERROR = "验证码错误";
 }

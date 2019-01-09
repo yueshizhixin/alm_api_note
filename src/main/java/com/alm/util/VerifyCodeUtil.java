@@ -132,7 +132,7 @@ public class VerifyCodeUtil {
         }
 
         // 添加噪点
-        float yawpRate = 2.85f;// 噪声率
+        float yawpRate = 0.85f;// 噪声率
         int area = (int) (yawpRate * w * h);
         for (int i = 0; i < area; i++) {
             int x = random.nextInt(w);

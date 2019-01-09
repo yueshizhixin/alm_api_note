@@ -53,7 +53,6 @@ public class RESTUtil {
     private static String TIP500=Exception.class.getName();
 
     public static<T> String HTTP500(){
-        System.out.println("GlobalTip.ERROR = " + GlobalTip.ERROR);
         return format(500,0, TIP500,null,1);
     }
 }

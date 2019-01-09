@@ -1,6 +1,8 @@
 package com.alm.user.controller;
 
+import com.alm.system.enume.CaptchaEnum;
 import com.alm.system.tip.GlobalTip;
+import com.alm.system.vo.Message;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
 import com.alm.util.JSONUtil;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.PathParam;
 import java.util.Date;
 
@@ -37,7 +40,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public String getUser(HttpServletRequest req,@ModelAttribute User u) {
+    public String getUser(@ModelAttribute User u) {
         User user = userService.selectPublicMessage(u.getId());
         if (user != null) {
             return RESTUtil.HTTP200(user);
@@ -48,11 +51,28 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/user", method = {RequestMethod.POST})
-    public String userTag(HttpServletRequest req,@ModelAttribute User u,@RequestParam(value = "tag")String tag) {
-        if ("signUp".equals(tag)) {
-            return RESTUtil.Message(userService.insertSignUp(u));
+    public String userTag(HttpServletRequest req, HttpSession session, @ModelAttribute User u, @RequestParam(value = "tag") String tag, @RequestParam(value = "captcha") String captcha) {
+        Message msg;
+        //用户注册或登录
+        if ("signUp".equals(tag) || "signIn".equals(tag)) {
+            //检测验证码
+            msg = userService.checkCaptcha(session.getAttribute(CaptchaEnum.type.IMG.getValue()), captcha);
+            if (msg == null || msg.getOk() == 0) {
+                return RESTUtil.Message(msg);
+            }
+            //用户注册
+            if ("signUp".equals(tag)) {
+                msg = userService.insertSignUp(u);
+                if (msg == null || msg.getOk() == 0) {
+                    return RESTUtil.Message(msg);
+                }
+            }
+            //用户登录
+            msg = userService.signIn(u);
+            return RESTUtil.Message(msg);
+        } else {
+            return RESTUtil.HTTP200(0, GlobalTip.COMM_PARAM_FAIL);
         }
-        return RESTUtil.HTTP200(u);
     }
 
 }

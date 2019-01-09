@@ -3,20 +3,20 @@ package com.alm.system.enume;
 /**
  * Created by IntelliJ IDEA.
  * <p>user: LISHUAI</p>
- * <p>date: 2019-01-02 18:58</p>
- * <p>desc: 用户枚举</p>
+ * <p>date: 2019-01-09 20:49</p>
+ * <p>desc: 验证码枚举</p>
  */
-public class UserEnum {
-    public enum signUp {
-        account(1, "account"),
-        phone(2, "phone"),
-        email(3, "email"),
+public class CaptchaEnum {
+    public enum type {
+        IMG(1, "CAPTCHA/IMG"),
+        TEL(2, "CAPTCHA/TEL"),
+        EMAIL(3, "CAPTCHA/EMAIL"),
         ;
 
         private int id;
         private String value;
 
-        signUp(int id, String value) {
+        type(int id, String value) {
             this.id = id;
             this.value = value;
         }
@@ -28,6 +28,6 @@ public class UserEnum {
         public String getValue() {
             return value;
         }
-
     }
+
 }

@@ -4,6 +4,8 @@ import com.alm.system.vo.Message;
 import com.alm.user.po.User;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by IntelliJ IDEA.
  * <p>user: LISHUAI</p>
@@ -27,9 +29,21 @@ public interface UserService {
     Message insertSignUp(User user);
 
     /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    Message signIn(User user);
+
+    /**
      * 检测用户唯一性
      * @param user
      * @return
      */
     Message checkUnique(User user);
+    /**
+     * 检测验证码
+     * @return
+     */
+    Message checkCaptcha(Object input,String captcha);
 }

@@ -1,5 +1,6 @@
 package com.alm.user.service.impl;
 
+import com.alm.system.enume.CaptchaEnum;
 import com.alm.system.enume.UserEnum;
 import com.alm.system.snowFlake.SnowFlake;
 import com.alm.system.tip.GlobalTip;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * <p>user: LISHUAI</p>
@@ -24,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
@@ -66,6 +71,59 @@ public class UserServiceImpl implements UserService {
         msg = new Message(1);
         msg.setMsg(GlobalTip.COMM_SUCCESS);
 
+        return msg;
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public Message signIn(User user) {
+        Message msg = new Message();
+        UserExample example = null;
+        UserExample.Criteria criteria = null;
+        if (user.getPwd() == null || user.getPwd().trim().equals("")) {
+            msg.setMsg("密码为空");
+            return msg;
+        }
+        if (user.getSignType() == null) {
+            msg.setMsg("注册类型未选择");
+            return msg;
+        }
+        if (user.getSignType() == UserEnum.signUp.account.getId()) {
+            if (user.getAcc() == null || user.getAcc().trim().equals("")) {
+                msg.setMsg("账号为空");
+                return msg;
+            }
+            example = new UserExample();
+            criteria = example.createCriteria();
+            criteria.andIsSignEqualTo(1);
+            criteria.andAccEqualTo(user.getAcc());
+            List<User> list = userMapper.selectByExample(example);
+            if (list == null || list.size() == 0) {
+                msg.setMsg("无该用户");
+                return msg;
+            }
+            if (!list.get(0).getPwd().equals(user.getPwd())) {
+                msg.setMsg("密码错误");
+                return msg;
+            }
+        } else if (user.getSignType() == UserEnum.signUp.phone.getId()) {
+            msg.setMsg("error");
+            return msg;
+        } else if (user.getSignType() == UserEnum.signUp.email.getId()) {
+            msg.setMsg("error");
+            return msg;
+        } else {
+            msg.setMsg("error");
+            return msg;
+        }
+
+        msg.setOk(1);
+        msg.setMsg(GlobalTip.COMM_SUCCESS);
         return msg;
     }
 
@@ -120,4 +178,20 @@ public class UserServiceImpl implements UserService {
         msg.setMsg(GlobalTip.COMM_SUCCESS);
         return msg;
     }
+
+    /**
+     * 检测验证码
+     *
+     * @return
+     */
+    @Override
+    public Message checkCaptcha(Object input, String captcha) {
+        Message msg = new Message(GlobalTip.CAPTCHAT_ERROR);
+        if (input != null && input.toString().equals(captcha)) {
+            msg.setOk(1);
+            msg.setMsg(GlobalTip.COMM_SUCCESS);
+        }
+        return msg;
+    }
+
 }
