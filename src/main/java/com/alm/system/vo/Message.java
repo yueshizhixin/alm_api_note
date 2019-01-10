@@ -22,6 +22,9 @@ public class Message {
 
     public Message(int ok) {
         this.ok = ok;
+        if (ok == 1) {
+            this.msg = GlobalTip.COMM_SUCCESS;
+        }
     }
 
     public Message(String msg) {

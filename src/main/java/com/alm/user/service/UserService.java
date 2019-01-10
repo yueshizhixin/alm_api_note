@@ -16,6 +16,7 @@ public interface UserService {
 
     /**
      * 查询用户公开信息
+     *
      * @param id 主键
      * @return 待补充
      */
@@ -23,6 +24,7 @@ public interface UserService {
 
     /**
      * 用户注册
+     *
      * @param user
      * @return
      */
@@ -30,6 +32,7 @@ public interface UserService {
 
     /**
      * 用户登录
+     *
      * @param user
      * @return
      */
@@ -37,13 +40,17 @@ public interface UserService {
 
     /**
      * 检测用户唯一性
+     *
      * @param user
      * @return
      */
     Message checkUnique(User user);
+
     /**
      * 检测验证码
+     *
      * @return
      */
-    Message checkCaptcha(Object input,String captcha);
+    Message checkCaptcha(Object captcha, Object input);
+
 }

@@ -8,6 +8,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="signType" jdbcType="INTEGER" property="signType" />
     <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="headImg" jdbcType="VARCHAR" property="headImg" />
     <result column="userName" jdbcType="VARCHAR" property="userName" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="brithday" jdbcType="TIMESTAMP" property="brithday" />
@@ -75,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, acc, phone, email, signType, pwd, userName, sex, brithday, vipLv, createTime, 
+    id, acc, phone, email, signType, pwd, headImg, userName, sex, brithday, vipLv, createTime, 
     latestTime, isSign
   </sql>
   <select id="selectByExample" parameterType="com.alm.user.po.UserExample" resultMap="BaseResultMap">
@@ -111,14 +112,14 @@
   <insert id="insert" parameterType="com.alm.user.po.User">
     insert into t_user (id, acc, phone, 
       email, signType, pwd, 
-      userName, sex, brithday, 
-      vipLv, createTime, latestTime, 
-      isSign)
+      headImg, userName, sex, 
+      brithday, vipLv, createTime, 
+      latestTime, isSign)
     values (#{id,jdbcType=BIGINT}, #{acc,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{signType,jdbcType=INTEGER}, #{pwd,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{brithday,jdbcType=TIMESTAMP}, 
-      #{vipLv,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{latestTime,jdbcType=TIMESTAMP}, 
-      #{isSign,jdbcType=INTEGER})
+      #{headImg,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{brithday,jdbcType=TIMESTAMP}, #{vipLv,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{latestTime,jdbcType=TIMESTAMP}, #{isSign,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.alm.user.po.User">
     insert into t_user
@@ -140,6 +141,9 @@
       </if>
       <if test="pwd != null">
         pwd,
+      </if>
+      <if test="headImg != null">
+        headImg,
       </if>
       <if test="userName != null">
         userName,
@@ -181,6 +185,9 @@
       </if>
       <if test="pwd != null">
         #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
       </if>
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
@@ -232,6 +239,9 @@
       <if test="record.pwd != null">
         pwd = #{record.pwd,jdbcType=VARCHAR},
       </if>
+      <if test="record.headImg != null">
+        headImg = #{record.headImg,jdbcType=VARCHAR},
+      </if>
       <if test="record.userName != null">
         userName = #{record.userName,jdbcType=VARCHAR},
       </if>
@@ -266,6 +276,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       signType = #{record.signType,jdbcType=INTEGER},
       pwd = #{record.pwd,jdbcType=VARCHAR},
+      headImg = #{record.headImg,jdbcType=VARCHAR},
       userName = #{record.userName,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=INTEGER},
       brithday = #{record.brithday,jdbcType=TIMESTAMP},
@@ -294,6 +305,9 @@
       </if>
       <if test="pwd != null">
         pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        headImg = #{headImg,jdbcType=VARCHAR},
       </if>
       <if test="userName != null">
         userName = #{userName,jdbcType=VARCHAR},
@@ -326,6 +340,7 @@
       email = #{email,jdbcType=VARCHAR},
       signType = #{signType,jdbcType=INTEGER},
       pwd = #{pwd,jdbcType=VARCHAR},
+      headImg = #{headImg,jdbcType=VARCHAR},
       userName = #{userName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
       brithday = #{brithday,jdbcType=TIMESTAMP},

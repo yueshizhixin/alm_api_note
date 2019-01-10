@@ -1,14 +1,12 @@
 package com.alm.user.po;
 
-import com.alm.util.DateUtil;
-
 import java.util.Date;
 
 /**
- * <p>table  用户表</p>
- * <p>author lishuai</p>
- * <p>time   2018-12-29</p>
- */
+ <p>table  用户表</p>
+ <p>author lishuai</p>
+ <p>time   2019-01-10</p>
+*/
 public class User {
     /**
      * 用户标识
@@ -41,6 +39,11 @@ public class User {
     private String pwd;
 
     /**
+     * 头像图片
+     */
+    private String headImg;
+
+    /**
      * 用户姓名
      */
     private String userName;
@@ -53,7 +56,7 @@ public class User {
     /**
      * 出生日期
      */
-    private Date brithday = DateUtil.defaultTime();
+    private Date brithday;
 
     /**
      * 会员级别
@@ -63,12 +66,12 @@ public class User {
     /**
      * 创建时间
      */
-    private Date createTime = DateUtil.now();
+    private Date createTime;
 
     /**
      * 最后登录时间
      */
-    private Date latestTime = DateUtil.now();
+    private Date latestTime;
 
     /**
      * 是否允许登录
@@ -77,7 +80,6 @@ public class User {
 
     /**
      * 用户标识
-     *
      * @return id 用户标识
      */
     public Long getId() {
@@ -86,7 +88,6 @@ public class User {
 
     /**
      * 用户标识
-     *
      * @param id 用户标识
      */
     public void setId(Long id) {
@@ -95,7 +96,6 @@ public class User {
 
     /**
      * 注册账号
-     *
      * @return acc 注册账号
      */
     public String getAcc() {
@@ -104,7 +104,6 @@ public class User {
 
     /**
      * 注册账号
-     *
      * @param acc 注册账号
      */
     public void setAcc(String acc) {
@@ -113,7 +112,6 @@ public class User {
 
     /**
      * 手机号
-     *
      * @return phone 手机号
      */
     public String getPhone() {
@@ -122,7 +120,6 @@ public class User {
 
     /**
      * 手机号
-     *
      * @param phone 手机号
      */
     public void setPhone(String phone) {
@@ -131,7 +128,6 @@ public class User {
 
     /**
      * 电子邮箱
-     *
      * @return email 电子邮箱
      */
     public String getEmail() {
@@ -140,7 +136,6 @@ public class User {
 
     /**
      * 电子邮箱
-     *
      * @param email 电子邮箱
      */
     public void setEmail(String email) {
@@ -149,7 +144,6 @@ public class User {
 
     /**
      * 注册方式
-     *
      * @return signType 注册方式
      */
     public Integer getSignType() {
@@ -158,7 +152,6 @@ public class User {
 
     /**
      * 注册方式
-     *
      * @param signType 注册方式
      */
     public void setSignType(Integer signType) {
@@ -167,7 +160,6 @@ public class User {
 
     /**
      * 密码
-     *
      * @return pwd 密码
      */
     public String getPwd() {
@@ -176,7 +168,6 @@ public class User {
 
     /**
      * 密码
-     *
      * @param pwd 密码
      */
     public void setPwd(String pwd) {
@@ -184,8 +175,23 @@ public class User {
     }
 
     /**
+     * 头像图片
+     * @return headImg 头像图片
+     */
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    /**
+     * 头像图片
+     * @param headImg 头像图片
+     */
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg == null ? null : headImg.trim();
+    }
+
+    /**
      * 用户姓名
-     *
      * @return userName 用户姓名
      */
     public String getUserName() {
@@ -194,7 +200,6 @@ public class User {
 
     /**
      * 用户姓名
-     *
      * @param userName 用户姓名
      */
     public void setUserName(String userName) {
@@ -203,7 +208,6 @@ public class User {
 
     /**
      * 性别
-     *
      * @return sex 性别
      */
     public Integer getSex() {
@@ -212,7 +216,6 @@ public class User {
 
     /**
      * 性别
-     *
      * @param sex 性别
      */
     public void setSex(Integer sex) {
@@ -221,7 +224,6 @@ public class User {
 
     /**
      * 出生日期
-     *
      * @return brithday 出生日期
      */
     public Date getBrithday() {
@@ -230,7 +232,6 @@ public class User {
 
     /**
      * 出生日期
-     *
      * @param brithday 出生日期
      */
     public void setBrithday(Date brithday) {
@@ -239,7 +240,6 @@ public class User {
 
     /**
      * 会员级别
-     *
      * @return vipLv 会员级别
      */
     public Integer getVipLv() {
@@ -248,7 +248,6 @@ public class User {
 
     /**
      * 会员级别
-     *
      * @param vipLv 会员级别
      */
     public void setVipLv(Integer vipLv) {
@@ -257,7 +256,6 @@ public class User {
 
     /**
      * 创建时间
-     *
      * @return createTime 创建时间
      */
     public Date getCreateTime() {
@@ -266,7 +264,6 @@ public class User {
 
     /**
      * 创建时间
-     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -275,7 +272,6 @@ public class User {
 
     /**
      * 最后登录时间
-     *
      * @return latestTime 最后登录时间
      */
     public Date getLatestTime() {
@@ -284,7 +280,6 @@ public class User {
 
     /**
      * 最后登录时间
-     *
      * @param latestTime 最后登录时间
      */
     public void setLatestTime(Date latestTime) {
@@ -293,7 +288,6 @@ public class User {
 
     /**
      * 是否允许登录
-     *
      * @return isSign 是否允许登录
      */
     public Integer getIsSign() {
@@ -302,7 +296,6 @@ public class User {
 
     /**
      * 是否允许登录
-     *
      * @param isSign 是否允许登录
      */
     public void setIsSign(Integer isSign) {

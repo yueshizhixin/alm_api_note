@@ -185,9 +185,9 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Message checkCaptcha(Object input, String captcha) {
+    public Message checkCaptcha(Object captcha, Object input) {
         Message msg = new Message(GlobalTip.CAPTCHAT_ERROR);
-        if (input != null && input.toString().equals(captcha)) {
+        if (input != null && input.toString().toUpperCase().equals(captcha)) {
             msg.setOk(1);
             msg.setMsg(GlobalTip.COMM_SUCCESS);
         }
