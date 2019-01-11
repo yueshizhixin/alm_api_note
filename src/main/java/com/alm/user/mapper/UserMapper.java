@@ -2,7 +2,10 @@ package com.alm.user.mapper;
 
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
+
 import java.util.List;
+
+import com.alm.user.vo.UserPublicMessage;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -27,4 +30,12 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    /**
+     * 获取用户公共信息
+     *
+     * @param id
+     * @return
+     */
+    UserPublicMessage selectPublicMsgByPrimaryKey(Long id);
 }

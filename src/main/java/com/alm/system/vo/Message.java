@@ -18,6 +18,7 @@ public class Message {
     private Page page;
 
     public Message() {
+        super();
     }
 
     public Message(int ok) {

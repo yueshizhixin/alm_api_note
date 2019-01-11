@@ -2,6 +2,9 @@ package com.alm.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 /**
@@ -20,7 +23,7 @@ public class DateUtil {
      * @return
      */
     public static String nowString() {
-        return sdf.format(new Date());
+        return sdf.format(now());
     }
 
     /**
@@ -30,6 +33,7 @@ public class DateUtil {
      */
     public static Date now() {
         return new Date();
+//        return Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public static String defaultTimeString() {

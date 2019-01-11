@@ -1,115 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alm.user.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.alm.user.po.User">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="acc" jdbcType="VARCHAR" property="acc" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="signType" jdbcType="INTEGER" property="signType" />
-    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
-    <result column="headImg" jdbcType="VARCHAR" property="headImg" />
-    <result column="userName" jdbcType="VARCHAR" property="userName" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="brithday" jdbcType="TIMESTAMP" property="brithday" />
-    <result column="vipLv" jdbcType="INTEGER" property="vipLv" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="latestTime" jdbcType="TIMESTAMP" property="latestTime" />
-    <result column="isSign" jdbcType="INTEGER" property="isSign" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.alm.user.po.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="acc" jdbcType="VARCHAR" property="acc"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="signType" jdbcType="INTEGER" property="signType"/>
+        <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+        <result column="headImg" jdbcType="VARCHAR" property="headImg"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="brithday" jdbcType="TIMESTAMP" property="brithday"/>
+        <result column="vipLv" jdbcType="INTEGER" property="vipLv"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="latestTime" jdbcType="TIMESTAMP" property="latestTime"/>
+        <result column="isSign" jdbcType="INTEGER" property="isSign"/>
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, acc, phone, email, signType, pwd, headImg, userName, sex, brithday, vipLv, createTime, 
     latestTime, isSign
   </sql>
-  <select id="selectByExample" parameterType="com.alm.user.po.UserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from t_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_user
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByExample" parameterType="com.alm.user.po.UserExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from t_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.alm.user.po.UserExample">
-    delete from t_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.alm.user.po.User">
+    <delete id="deleteByExample" parameterType="com.alm.user.po.UserExample">
+        delete from t_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.alm.user.po.User">
     insert into t_user (id, acc, phone, 
       email, signType, pwd, 
       headImg, userName, sex, 
@@ -121,219 +124,219 @@
       #{brithday,jdbcType=TIMESTAMP}, #{vipLv,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{latestTime,jdbcType=TIMESTAMP}, #{isSign,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.alm.user.po.User">
-    insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="acc != null">
-        acc,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="signType != null">
-        signType,
-      </if>
-      <if test="pwd != null">
-        pwd,
-      </if>
-      <if test="headImg != null">
-        headImg,
-      </if>
-      <if test="userName != null">
-        userName,
-      </if>
-      <if test="sex != null">
-        sex,
-      </if>
-      <if test="brithday != null">
-        brithday,
-      </if>
-      <if test="vipLv != null">
-        vipLv,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="latestTime != null">
-        latestTime,
-      </if>
-      <if test="isSign != null">
-        isSign,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="acc != null">
-        #{acc,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="signType != null">
-        #{signType,jdbcType=INTEGER},
-      </if>
-      <if test="pwd != null">
-        #{pwd,jdbcType=VARCHAR},
-      </if>
-      <if test="headImg != null">
-        #{headImg,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="brithday != null">
-        #{brithday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="vipLv != null">
-        #{vipLv,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="latestTime != null">
-        #{latestTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isSign != null">
-        #{isSign,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.alm.user.po.UserExample" resultType="java.lang.Long">
-    select count(*) from t_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update t_user
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.acc != null">
+    <insert id="insertSelective" parameterType="com.alm.user.po.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="acc != null">
+                acc,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="signType != null">
+                signType,
+            </if>
+            <if test="pwd != null">
+                pwd,
+            </if>
+            <if test="headImg != null">
+                headImg,
+            </if>
+            <if test="userName != null">
+                userName,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="brithday != null">
+                brithday,
+            </if>
+            <if test="vipLv != null">
+                vipLv,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="latestTime != null">
+                latestTime,
+            </if>
+            <if test="isSign != null">
+                isSign,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="acc != null">
+                #{acc,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                #{signType,jdbcType=INTEGER},
+            </if>
+            <if test="pwd != null">
+                #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="headImg != null">
+                #{headImg,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="brithday != null">
+                #{brithday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="vipLv != null">
+                #{vipLv,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestTime != null">
+                #{latestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isSign != null">
+                #{isSign,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.alm.user.po.UserExample" resultType="java.lang.Long">
+        select count(*) from t_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update t_user
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.acc != null">
+                acc = #{record.acc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.phone != null">
+                phone = #{record.phone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.email != null">
+                email = #{record.email,jdbcType=VARCHAR},
+            </if>
+            <if test="record.signType != null">
+                signType = #{record.signType,jdbcType=INTEGER},
+            </if>
+            <if test="record.pwd != null">
+                pwd = #{record.pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="record.headImg != null">
+                headImg = #{record.headImg,jdbcType=VARCHAR},
+            </if>
+            <if test="record.userName != null">
+                userName = #{record.userName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.sex != null">
+                sex = #{record.sex,jdbcType=INTEGER},
+            </if>
+            <if test="record.brithday != null">
+                brithday = #{record.brithday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.vipLv != null">
+                vipLv = #{record.vipLv,jdbcType=INTEGER},
+            </if>
+            <if test="record.createTime != null">
+                createTime = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.latestTime != null">
+                latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.isSign != null">
+                isSign = #{record.isSign,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update t_user
+        set id = #{record.id,jdbcType=BIGINT},
         acc = #{record.acc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
-      </if>
-      <if test="record.signType != null">
         signType = #{record.signType,jdbcType=INTEGER},
-      </if>
-      <if test="record.pwd != null">
         pwd = #{record.pwd,jdbcType=VARCHAR},
-      </if>
-      <if test="record.headImg != null">
         headImg = #{record.headImg,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userName != null">
         userName = #{record.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sex != null">
         sex = #{record.sex,jdbcType=INTEGER},
-      </if>
-      <if test="record.brithday != null">
         brithday = #{record.brithday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.vipLv != null">
         vipLv = #{record.vipLv,jdbcType=INTEGER},
-      </if>
-      <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.latestTime != null">
         latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.isSign != null">
-        isSign = #{record.isSign,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update t_user
-    set id = #{record.id,jdbcType=BIGINT},
-      acc = #{record.acc,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      signType = #{record.signType,jdbcType=INTEGER},
-      pwd = #{record.pwd,jdbcType=VARCHAR},
-      headImg = #{record.headImg,jdbcType=VARCHAR},
-      userName = #{record.userName,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=INTEGER},
-      brithday = #{record.brithday,jdbcType=TIMESTAMP},
-      vipLv = #{record.vipLv,jdbcType=INTEGER},
-      createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
-      isSign = #{record.isSign,jdbcType=INTEGER}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.alm.user.po.User">
-    update t_user
-    <set>
-      <if test="acc != null">
-        acc = #{acc,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="signType != null">
-        signType = #{signType,jdbcType=INTEGER},
-      </if>
-      <if test="pwd != null">
-        pwd = #{pwd,jdbcType=VARCHAR},
-      </if>
-      <if test="headImg != null">
-        headImg = #{headImg,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        userName = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="brithday != null">
-        brithday = #{brithday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="vipLv != null">
-        vipLv = #{vipLv,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="latestTime != null">
-        latestTime = #{latestTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isSign != null">
-        isSign = #{isSign,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.alm.user.po.User">
+        isSign = #{record.isSign,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.alm.user.po.User">
+        update t_user
+        <set>
+            <if test="acc != null">
+                acc = #{acc,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                signType = #{signType,jdbcType=INTEGER},
+            </if>
+            <if test="pwd != null">
+                pwd = #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="headImg != null">
+                headImg = #{headImg,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                userName = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="brithday != null">
+                brithday = #{brithday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="vipLv != null">
+                vipLv = #{vipLv,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestTime != null">
+                latestTime = #{latestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isSign != null">
+                isSign = #{isSign,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.alm.user.po.User">
     update t_user
     set acc = #{acc,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
@@ -350,4 +353,21 @@
       isSign = #{isSign,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+    <sql id="publicMsg_Column_List">
+    id, acc,headImg, userName, sex
+    </sql>
+    <resultMap id="userPublicMsgResultMap" type="com.alm.user.vo.UserPublicMessage">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="acc" jdbcType="VARCHAR" property="acc"/>
+        <result column="headImg" jdbcType="VARCHAR" property="headImg"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+    </resultMap>
+    <select id="selectPublicMsgByPrimaryKey" parameterType="java.lang.Long" resultMap="userPublicMsgResultMap">
+        select
+        <include refid="publicMsg_Column_List"/>
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
 </mapper>

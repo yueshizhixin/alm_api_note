@@ -9,6 +9,7 @@ import com.alm.user.mapper.UserMapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
 import com.alm.user.service.UserService;
+import com.alm.user.vo.UserPublicMessage;
 import com.alm.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,17 +33,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
-    }
-
-    /**
-     * 查询用户公开信息
-     *
-     * @param id 主键
-     * @return 待补充
-     */
-    @Override
-    public User selectPublicMessage(long id) {
-        return userMapper.selectByPrimaryKey(id);
     }
 
     /**
@@ -81,10 +71,11 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Message signIn(User user) {
+    public Message updateSignIn(User user) {
         Message msg = new Message();
         UserExample example = null;
         UserExample.Criteria criteria = null;
+        List<User> list = null;
         if (user.getPwd() == null || user.getPwd().trim().equals("")) {
             msg.setMsg("密码为空");
             return msg;
@@ -102,7 +93,7 @@ public class UserServiceImpl implements UserService {
             criteria = example.createCriteria();
             criteria.andIsSignEqualTo(1);
             criteria.andAccEqualTo(user.getAcc());
-            List<User> list = userMapper.selectByExample(example);
+            list = userMapper.selectByExample(example);
             if (list == null || list.size() == 0) {
                 msg.setMsg("无该用户");
                 return msg;
@@ -121,6 +112,12 @@ public class UserServiceImpl implements UserService {
             msg.setMsg("error");
             return msg;
         }
+        example = new UserExample();
+        criteria = example.createCriteria();
+        criteria.andIdEqualTo(list.get(0).getId());
+        User u = new User();
+        u.setLatestTime(DateUtil.now());
+        userMapper.updateByExampleSelective(u, example);
 
         msg.setOk(1);
         msg.setMsg(GlobalTip.COMM_SUCCESS);
@@ -192,6 +189,20 @@ public class UserServiceImpl implements UserService {
             msg.setMsg(GlobalTip.COMM_SUCCESS);
         }
         return msg;
+    }
+
+    /**
+     * 查询用户公开信息
+     *
+     * @param id 主键
+     * @return 待补充
+     */
+    @Override
+    public UserPublicMessage selectPublicMessage(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return userMapper.selectPublicMsgByPrimaryKey(id);
     }
 
 }

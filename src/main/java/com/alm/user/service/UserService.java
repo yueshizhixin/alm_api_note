@@ -2,6 +2,7 @@ package com.alm.user.service;
 
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
+import com.alm.user.vo.UserPublicMessage;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
@@ -13,14 +14,6 @@ import javax.servlet.http.HttpSession;
  * <p>desc: </p>
  */
 public interface UserService {
-
-    /**
-     * 查询用户公开信息
-     *
-     * @param id 主键
-     * @return 待补充
-     */
-    User selectPublicMessage(long id);
 
     /**
      * 用户注册
@@ -36,7 +29,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    Message signIn(User user);
+    Message updateSignIn(User user);
 
     /**
      * 检测用户唯一性
@@ -52,5 +45,13 @@ public interface UserService {
      * @return
      */
     Message checkCaptcha(Object captcha, Object input);
+
+    /**
+     * 查询用户公开信息
+     *
+     * @param id 主键
+     * @return 待补充
+     */
+    UserPublicMessage selectPublicMessage(Long id);
 
 }

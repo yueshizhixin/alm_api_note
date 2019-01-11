@@ -1,7 +1,12 @@
 package com.alm.util;
 
+import com.alm.system.exception.GlobalExceptionHandler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class JSONUtil {
 
+    private static final Logger LOGGER = LogManager.getLogger(JSONUtil.class);
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     /**
@@ -27,6 +33,10 @@ public class JSONUtil {
             }
             return objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
+            LOGGER.error("\n===异常开始\tjson转化错误");
+            LOGGER.error(e);
+            Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
+            LOGGER.error("\n===异常结束");
             return null;
         }
     }

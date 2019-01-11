@@ -1,11 +1,13 @@
 package com.alm.user.controller;
 
 import com.alm.system.enume.CaptchaEnum;
+import com.alm.system.enume.SessionEnum;
 import com.alm.system.service.CommService;
 import com.alm.system.tip.GlobalTip;
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
+import com.alm.user.vo.UserPublicMessage;
 import com.alm.util.JSONUtil;
 import com.alm.util.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +33,6 @@ public class UserController {
     public UserController(UserService userService, CommService commService) {
         this.userService = userService;
         this.commService = commService;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public String getUser(@ModelAttribute User u) {
-        User user = userService.selectPublicMessage(u.getId());
-        if (user != null) {
-            return RESTUtil.HTTP200(user);
-        } else {
-            return RESTUtil.HTTP200(0, GlobalTip.COMM_NONE);
-        }
     }
 
     /**
@@ -72,7 +63,7 @@ public class UserController {
                 }
             }
             //用户登录
-            msg = userService.signIn(user);
+            msg = userService.updateSignIn(user);
             //放入session
             if (msg.getOk() == 1) {
                 commService.sessionUpdateUser(session, user.getAcc());
@@ -99,20 +90,29 @@ public class UserController {
         //登录刷新
         if ("signFresh".equals(tag)) {
             msg = new Message();
-            User u = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute(SessionEnum.user.getValue());
             if (u != null && u.getId() != null && u.getId() > 0) {
                 msg.setOk(1);
-//                commService.sessionUpdateUser(session, u.getId());
-                return RESTUtil.Message(msg);
+                msg.setData(session.getAttribute(SessionEnum.userPublicMsg.getValue()));
             }
             return RESTUtil.Message(msg);
         } else if ("signOut".equals(tag)) {
             msg = new Message(1);
-            session.setAttribute("user", null);
+            session.setAttribute(SessionEnum.user.getValue(), null);
             return RESTUtil.Message(msg);
         } else {
             return RESTUtil.HTTP200(0, GlobalTip.COMM_PARAM_FAIL);
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/msg/{id}", method = RequestMethod.GET)
+    public String getUser(@ModelAttribute User u) {
+        UserPublicMessage userMsg = userService.selectPublicMessage(u.getId());
+        if (userMsg == null) {
+            return RESTUtil.HTTP200(0, GlobalTip.COMM_NONE);
+        }
+        return RESTUtil.HTTP200(userMsg);
     }
 
 }

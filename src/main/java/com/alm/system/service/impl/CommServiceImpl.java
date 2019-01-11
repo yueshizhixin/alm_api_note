@@ -1,9 +1,12 @@
 package com.alm.system.service.impl;
 
+import com.alm.system.enume.SessionEnum;
+import com.alm.system.enume.UserEnum;
 import com.alm.system.service.CommService;
 import com.alm.user.mapper.UserMapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
+import com.alm.user.vo.UserPublicMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,10 +40,13 @@ public class CommServiceImpl implements CommService {
         if (id == null) {
             return;
         }
+        //用户信息
         User u = userMapper.selectByPrimaryKey(id);
-        if (u != null && u.getId() != null) {
-            session.setAttribute("user", u);
-        }
+        session.setAttribute(SessionEnum.user.getValue(), u);
+
+        //用户公共信息
+        UserPublicMessage userMsg = userMapper.selectPublicMsgByPrimaryKey(id);
+        session.setAttribute(SessionEnum.userPublicMsg.getValue(), userMsg);
     }
 
     /**
@@ -56,9 +62,21 @@ public class CommServiceImpl implements CommService {
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
         criteria.andAccEqualTo(acc);
+
+        //用户全部信息
         List<User> list = userMapper.selectByExample(example);
-        if (list != null && list.size() > 0 && list.get(0).getId() != null) {
-            session.setAttribute("user", list.get(0));
+        User user = null;
+        if (list != null && list.size() > 0) {
+            user = list.get(0);
+            session.setAttribute(SessionEnum.user.getValue(), user);
+        }
+
+        //用户公共信息
+        if (user != null && user.getId() != null) {
+            UserPublicMessage userMsg = userMapper.selectPublicMsgByPrimaryKey(user.getId());
+            session.setAttribute(SessionEnum.userPublicMsg.getValue(), userMsg);
+        } else {
+            session.setAttribute(SessionEnum.userPublicMsg.getValue(), null);
         }
     }
 }
