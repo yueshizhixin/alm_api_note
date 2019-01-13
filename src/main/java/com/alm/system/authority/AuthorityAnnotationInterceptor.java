@@ -1,6 +1,8 @@
 package com.alm.system.authority;
 
 import com.alm.system.enume.SessionEnum;
+import com.alm.user.po.User;
+import com.alm.util.RESTUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -34,18 +36,19 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
                     }
                     if (authority != null) {
                         if (AuthorityEnum.UNAUTHORIZED == authority.value()) {
-                            if (req.getSession().getAttribute(SessionEnum.user.getValue()) == null) {
-                                res.sendRedirect("/demo/401.c");
+                            User user = (User) req.getSession().getAttribute(SessionEnum.user.getValue());
+                            if (user == null || user.getId() == null) {
+                                req.getRequestDispatcher("/api/401").forward(req, res);
                                 return false;
                             }
                         } else if (AuthorityEnum.FORBIDDEN == authority.value()) {
-                            res.sendRedirect("/demo/403.c");
+                            req.getRequestDispatcher("/api/403").forward(req, res);
                             return false;
                         }
                     }
                 }
             } catch (Exception e) {
-                //500
+                req.getRequestDispatcher("/api/500").forward(req, res);
                 return false;
             }
         }

@@ -44,7 +44,6 @@ public class UserController {
      * @param captcha
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/user/act=sign", method = {RequestMethod.POST})
     public String userSign(HttpSession session, @ModelAttribute User user, @RequestParam(value = "tag") String tag, @RequestParam(value = "captcha") String captcha) {
         Message msg;
@@ -83,7 +82,6 @@ public class UserController {
      * @param tag
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/user", method = {RequestMethod.POST})
     public String userTag(HttpSession session, @RequestParam(value = "tag") String tag) {
         Message msg;
@@ -105,7 +103,12 @@ public class UserController {
         }
     }
 
-    @ResponseBody
+
+    /**
+     * 用户公开信息
+     * @param u
+     * @return
+     */
     @RequestMapping(value = "/user/msg/{id}", method = RequestMethod.GET)
     public String getUser(@ModelAttribute User u) {
         UserPublicMessage userMsg = userService.selectPublicMessage(u.getId());

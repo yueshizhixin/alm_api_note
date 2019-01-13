@@ -48,6 +48,14 @@ public class RESTUtil {
 
     private static String TIP500 = Exception.class.getName();
 
+    public static <T> String HTTP401() {
+        return format(401, 0, null, null, null);
+    }
+
+    public static <T> String HTTP403() {
+        return format(401, 0, null, null, null);
+    }
+
     public static <T> String HTTP500() {
         return format(500, 0, TIP500, null, null);
     }
