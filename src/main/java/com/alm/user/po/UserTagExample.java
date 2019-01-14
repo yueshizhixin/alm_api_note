@@ -1,21 +1,21 @@
-package com.alm.note.po;
+package com.alm.user.po;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserTagExample {
     /**
-     * t_note_usertag
+     * t_user_tag
      */
     protected String orderByClause;
 
     /**
-     * t_note_usertag
+     * t_user_tag
      */
     protected boolean distinct;
 
     /**
-     * t_note_usertag
+     * t_user_tag
      */
     protected List<Criteria> oredCriteria;
 
@@ -73,7 +73,7 @@ public class UserTagExample {
     }
 
     /**
-     * 笔记标签表 2019-01-13
+     * 标签表 2019-01-14
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -306,69 +306,69 @@ public class UserTagExample {
             return (Criteria) this;
         }
 
-        public Criteria andSequenceIsNull() {
-            addCriterion("sequence is null");
+        public Criteria andIsPrivateIsNull() {
+            addCriterion("isPrivate is null");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceIsNotNull() {
-            addCriterion("sequence is not null");
+        public Criteria andIsPrivateIsNotNull() {
+            addCriterion("isPrivate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceEqualTo(Integer value) {
-            addCriterion("sequence =", value, "sequence");
+        public Criteria andIsPrivateEqualTo(Integer value) {
+            addCriterion("isPrivate =", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceNotEqualTo(Integer value) {
-            addCriterion("sequence <>", value, "sequence");
+        public Criteria andIsPrivateNotEqualTo(Integer value) {
+            addCriterion("isPrivate <>", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceGreaterThan(Integer value) {
-            addCriterion("sequence >", value, "sequence");
+        public Criteria andIsPrivateGreaterThan(Integer value) {
+            addCriterion("isPrivate >", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sequence >=", value, "sequence");
+        public Criteria andIsPrivateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("isPrivate >=", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceLessThan(Integer value) {
-            addCriterion("sequence <", value, "sequence");
+        public Criteria andIsPrivateLessThan(Integer value) {
+            addCriterion("isPrivate <", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceLessThanOrEqualTo(Integer value) {
-            addCriterion("sequence <=", value, "sequence");
+        public Criteria andIsPrivateLessThanOrEqualTo(Integer value) {
+            addCriterion("isPrivate <=", value, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceIn(List<Integer> values) {
-            addCriterion("sequence in", values, "sequence");
+        public Criteria andIsPrivateIn(List<Integer> values) {
+            addCriterion("isPrivate in", values, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceNotIn(List<Integer> values) {
-            addCriterion("sequence not in", values, "sequence");
+        public Criteria andIsPrivateNotIn(List<Integer> values) {
+            addCriterion("isPrivate not in", values, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceBetween(Integer value1, Integer value2) {
-            addCriterion("sequence between", value1, value2, "sequence");
+        public Criteria andIsPrivateBetween(Integer value1, Integer value2) {
+            addCriterion("isPrivate between", value1, value2, "isPrivate");
             return (Criteria) this;
         }
 
-        public Criteria andSequenceNotBetween(Integer value1, Integer value2) {
-            addCriterion("sequence not between", value1, value2, "sequence");
+        public Criteria andIsPrivateNotBetween(Integer value1, Integer value2) {
+            addCriterion("isPrivate not between", value1, value2, "isPrivate");
             return (Criteria) this;
         }
     }
 
     /**
-     * t_note_usertag
+     * t_user_tag
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -378,7 +378,7 @@ public class UserTagExample {
     }
 
     /**
-     * 笔记标签表 2019-01-13
+     * 标签表 2019-01-14
      */
     public static class Criterion {
         private String condition;

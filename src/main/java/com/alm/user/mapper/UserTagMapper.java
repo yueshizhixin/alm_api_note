@@ -1,7 +1,7 @@
-package com.alm.note.mapper;
+package com.alm.user.mapper;
 
-import com.alm.note.po.UserTag;
-import com.alm.note.po.UserTagExample;
+import com.alm.user.po.UserTag;
+import com.alm.user.po.UserTagExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

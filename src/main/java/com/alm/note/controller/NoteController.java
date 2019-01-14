@@ -7,10 +7,7 @@ import com.alm.user.po.User;
 import com.alm.util.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,12 +28,6 @@ public class NoteController {
         this.noteService = noteService;
     }
 
-    @Authority
-    @RequestMapping(value = "/user/tag", method = {RequestMethod.GET})
-    public String userTag(HttpSession session) {
-//        User user = (User) session.getAttribute(SessionEnum.user.getValue());
-//        return RESTUtil.HTTP200(noteService.getUserTag(user.getId()));
-        return RESTUtil.HTTP200(1, null);
-    }
+
 
 }

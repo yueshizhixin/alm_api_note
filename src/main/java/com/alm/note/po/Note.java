@@ -1,11 +1,26 @@
 package com.alm.note.po;
 
+import com.alm.user.po.UserTag;
+
+import java.util.Date;
+import java.util.List;
+
 /**
  <p>table  笔记表</p>
  <p>author lishuai</p>
- <p>time   2018-12-29</p>
+ <p>time   2019-01-14</p>
 */
 public class Note {
+    private List<UserTag> tagList;
+
+    public List<UserTag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<UserTag> tagList) {
+        this.tagList = tagList;
+    }
+
     /**
      * 笔记id
      */
@@ -14,12 +29,17 @@ public class Note {
     /**
      * 用户id
      */
-    private Integer userId;
+    private Long userId;
 
     /**
      * 标题
      */
     private String title;
+
+    /**
+     * 是否私有
+     */
+    private Integer isPrivate;
 
     /**
      * 概要
@@ -30,6 +50,21 @@ public class Note {
      * 内容
      */
     private String content;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+
+    /**
+     * 阅读数
+     */
+    private Integer readCount;
 
     /**
      * 评论数
@@ -61,7 +96,7 @@ public class Note {
      * 用户id
      * @return userId 用户id
      */
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -69,7 +104,7 @@ public class Note {
      * 用户id
      * @param userId 用户id
      */
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -87,6 +122,22 @@ public class Note {
      */
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    /**
+     * 是否私有
+     * @return isPrivate 是否私有
+     */
+    public Integer getIsPrivate() {
+        return isPrivate;
+    }
+
+    /**
+     * 是否私有
+     * @param isPrivate 是否私有
+     */
+    public void setIsPrivate(Integer isPrivate) {
+        this.isPrivate = isPrivate;
     }
 
     /**
@@ -119,6 +170,54 @@ public class Note {
      */
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    /**
+     * 创建时间
+     * @return createTime 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 创建时间
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * 更新时间
+     * @return updateTime 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 更新时间
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 阅读数
+     * @return readCount 阅读数
+     */
+    public Integer getReadCount() {
+        return readCount;
+    }
+
+    /**
+     * 阅读数
+     * @param readCount 阅读数
+     */
+    public void setReadCount(Integer readCount) {
+        this.readCount = readCount;
     }
 
     /**

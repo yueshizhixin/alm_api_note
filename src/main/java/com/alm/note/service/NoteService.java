@@ -1,8 +1,8 @@
 package com.alm.note.service;
 
+
 import com.alm.note.po.Note;
-import com.alm.note.po.NoteExample;
-import com.alm.note.po.UserTag;
+import com.alm.note.po.NoteTag;
 
 import java.util.List;
 
@@ -14,12 +14,6 @@ import java.util.List;
  */
 public interface NoteService {
 
-    /**
-     * 获取用户标签
-     *
-     * @param id
-     * @return
-     */
-    public List<UserTag> getUserTag(Long id);
+    public List<Note> getNote();
 
 }

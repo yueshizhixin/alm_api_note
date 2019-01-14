@@ -3,18 +3,18 @@ package com.alm.note.po;
 /**
  <p>table  笔记标签表</p>
  <p>author lishuai</p>
- <p>time   2019-01-13</p>
+ <p>time   2019-01-14</p>
 */
-public class UserTag {
+public class NoteTag {
     /**
      * 
      */
     private Integer id;
 
     /**
-     * 标签名称
+     * 标签
      */
-    private String name;
+    private Integer tagId;
 
     /**
      * 用户
@@ -24,7 +24,7 @@ public class UserTag {
     /**
      * 
      */
-    private Integer sequence;
+    private Long noteId;
 
     /**
      * 
@@ -43,19 +43,19 @@ public class UserTag {
     }
 
     /**
-     * 标签名称
-     * @return name 标签名称
+     * 标签
+     * @return tagId 标签
      */
-    public String getName() {
-        return name;
+    public Integer getTagId() {
+        return tagId;
     }
 
     /**
-     * 标签名称
-     * @param name 标签名称
+     * 标签
+     * @param tagId 标签
      */
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
     }
 
     /**
@@ -76,17 +76,17 @@ public class UserTag {
 
     /**
      * 
-     * @return sequence 
+     * @return noteId 
      */
-    public Integer getSequence() {
-        return sequence;
+    public Long getNoteId() {
+        return noteId;
     }
 
     /**
      * 
-     * @param sequence 
+     * @param noteId 
      */
-    public void setSequence(Integer sequence) {
-        this.sequence = sequence;
+    public void setNoteId(Long noteId) {
+        this.noteId = noteId;
     }
 }
