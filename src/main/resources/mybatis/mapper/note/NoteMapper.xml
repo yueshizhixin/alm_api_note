@@ -13,7 +13,25 @@
         <result column="readCount" jdbcType="INTEGER" property="readCount"/>
         <result column="commenCount" jdbcType="INTEGER" property="commenCount"/>
         <result column="shareCount" jdbcType="INTEGER" property="shareCount"/>
+        <collection property="tagList"
+                    javaType="java.util.ArrayList"
+                    ofType="com.alm.user.mapper.UserTagMapper.BaseResultMap"
+                    column="id" select="selectTagByNoteId">
+        </collection>
     </resultMap>
+
+    <!--根据noteId查询笔记标签-->
+    <select id="selectTagByNoteId" resultMap="com.alm.user.mapper.UserTagMapper.BaseResultMap"
+            parameterType="java.lang.Long">
+        select id,name,isPrivate
+        from t_user_tag
+        where id in (
+          select tagId
+          from t_note_tag
+          where noteId= #{_parameter,jdbcType=INTEGER}
+        )
+    </select>
+
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">

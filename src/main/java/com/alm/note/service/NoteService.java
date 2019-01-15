@@ -14,6 +14,10 @@ import java.util.List;
  */
 public interface NoteService {
 
-    public List<Note> getNote();
+    /**
+     * 根据tag获取note
+     * @return
+     */
+    public List<Note> getPulicNoteByTagId(int id);
 
 }

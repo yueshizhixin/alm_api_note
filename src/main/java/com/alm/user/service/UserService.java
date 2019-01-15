@@ -2,10 +2,12 @@ package com.alm.user.service;
 
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
+import com.alm.user.po.UserTag;
 import com.alm.user.vo.UserPublicMessage;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -53,5 +55,13 @@ public interface UserService {
      * @return 待补充
      */
     UserPublicMessage selectPublicMessage(Long id);
+
+    /**
+     * 获取某用户标签
+     *
+     * @param id
+     * @return
+     */
+    List<UserTag> selectUserTag(Long id);
 
 }

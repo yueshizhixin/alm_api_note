@@ -6,8 +6,11 @@ import com.alm.system.snowFlake.SnowFlake;
 import com.alm.system.tip.GlobalTip;
 import com.alm.system.vo.Message;
 import com.alm.user.mapper.UserMapper;
+import com.alm.user.mapper.UserTagMapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
+import com.alm.user.po.UserTag;
+import com.alm.user.po.UserTagExample;
 import com.alm.user.service.UserService;
 import com.alm.user.vo.UserPublicMessage;
 import com.alm.util.DateUtil;
@@ -28,11 +31,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+    private final UserTagMapper userTagMapper;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(UserMapper userMapper, UserTagMapper userTagMapper) {
         this.userMapper = userMapper;
+        this.userTagMapper = userTagMapper;
     }
 
     /**
@@ -203,6 +208,23 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         return userMapper.selectPublicMsgByPrimaryKey(id);
+    }
+
+    /**
+     * 获取某用户标签
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<UserTag> selectUserTag(Long id) {
+        if (id == null) {
+            return null;
+        }
+        UserTagExample example = new UserTagExample();
+        UserTagExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        return userTagMapper.selectByExample(example);
     }
 
 }

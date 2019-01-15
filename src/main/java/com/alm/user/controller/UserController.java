@@ -1,11 +1,13 @@
 package com.alm.user.controller;
 
+import com.alm.note.service.NoteService;
 import com.alm.system.enume.CaptchaEnum;
 import com.alm.system.enume.SessionEnum;
 import com.alm.system.service.CommService;
 import com.alm.system.tip.GlobalTip;
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
+import com.alm.user.po.UserTag;
 import com.alm.user.service.UserService;
 import com.alm.user.vo.UserPublicMessage;
 import com.alm.util.JSONUtil;
@@ -27,12 +29,13 @@ public class UserController {
 
     private final UserService userService;
     private final CommService commService;
-
+    private final NoteService noteService;
 
     @Autowired
-    public UserController(UserService userService, CommService commService) {
+    public UserController(UserService userService, CommService commService, NoteService noteService) {
         this.userService = userService;
         this.commService = commService;
+        this.noteService = noteService;
     }
 
     /**
@@ -106,6 +109,7 @@ public class UserController {
 
     /**
      * 用户公开信息
+     *
      * @param u
      * @return
      */
@@ -118,4 +122,19 @@ public class UserController {
         return RESTUtil.HTTP200(userMsg);
     }
 
+    /**
+     * 用户公开信息
+     *
+     * @param u
+     * @return
+     */
+    @RequestMapping(value = "/user/{id}/tag", method = RequestMethod.GET)
+    public String getUserTag(@ModelAttribute User u) {
+        return RESTUtil.HTTP200(userService.selectUserTag(u.getId()));
+    }
+
+    @RequestMapping(value = "/user/tag/{id}", method = RequestMethod.GET)
+    public String getNote(@ModelAttribute UserTag userTag) {
+        return RESTUtil.HTTP200(noteService.getPulicNoteByTagId(userTag.getId()));
+    }
 }

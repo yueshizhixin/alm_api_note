@@ -1,11 +1,13 @@
 package com.alm.demo.controller;
 
 import com.alm.demo.service.DemoService;
+import com.alm.note.service.NoteService;
 import com.alm.system.authority.Authority;
 import com.alm.system.authority.AuthorityEnum;
 import com.alm.system.enume.SessionEnum;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
+import com.alm.util.JSONUtil;
 import com.alm.util.RESTUtil;
 import com.sun.net.httpserver.HttpContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,22 +34,15 @@ public class DemoController {
 
     private final DemoService demoser;
     private final UserService userService;
+    private final NoteService noteService;
 
     @Autowired
-    public DemoController(UserService userService, DemoService demoser) {
+    public DemoController(UserService userService, DemoService demoser, NoteService noteService) {
         this.userService = userService;
         this.demoser = demoser;
+        this.noteService = noteService;
     }
 
-    @RequestMapping("/d1")
-    @ResponseBody
-    public ModelAndView test(HttpServletRequest req) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/test/t1");
-        User u = new User();
-        req.getSession().setAttribute(SessionEnum.user.getValue(), u);
-        return modelAndView;
-    }
 
     /**
      * 返回json

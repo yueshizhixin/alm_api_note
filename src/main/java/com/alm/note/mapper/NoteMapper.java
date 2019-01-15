@@ -3,6 +3,8 @@ package com.alm.note.mapper;
 import com.alm.note.po.Note;
 import com.alm.note.po.NoteExample;
 import java.util.List;
+
+import com.alm.user.po.UserTag;
 import org.apache.ibatis.annotations.Param;
 
 public interface NoteMapper {

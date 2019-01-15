@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- <p>table  笔记表</p>
- <p>author lishuai</p>
- <p>time   2019-01-14</p>
-*/
+ * <p>table  笔记表</p>
+ * <p>author lishuai</p>
+ * <p>time   2019-01-14</p>
+ */
 public class Note {
     private List<UserTag> tagList;
 
@@ -20,6 +20,7 @@ public class Note {
     public void setTagList(List<UserTag> tagList) {
         this.tagList = tagList;
     }
+
 
     /**
      * 笔记id
@@ -78,6 +79,7 @@ public class Note {
 
     /**
      * 笔记id
+     *
      * @return id 笔记id
      */
     public Long getId() {
@@ -86,6 +88,7 @@ public class Note {
 
     /**
      * 笔记id
+     *
      * @param id 笔记id
      */
     public void setId(Long id) {
@@ -94,6 +97,7 @@ public class Note {
 
     /**
      * 用户id
+     *
      * @return userId 用户id
      */
     public Long getUserId() {
@@ -102,6 +106,7 @@ public class Note {
 
     /**
      * 用户id
+     *
      * @param userId 用户id
      */
     public void setUserId(Long userId) {
@@ -110,6 +115,7 @@ public class Note {
 
     /**
      * 标题
+     *
      * @return title 标题
      */
     public String getTitle() {
@@ -118,6 +124,7 @@ public class Note {
 
     /**
      * 标题
+     *
      * @param title 标题
      */
     public void setTitle(String title) {
@@ -126,6 +133,7 @@ public class Note {
 
     /**
      * 是否私有
+     *
      * @return isPrivate 是否私有
      */
     public Integer getIsPrivate() {
@@ -134,6 +142,7 @@ public class Note {
 
     /**
      * 是否私有
+     *
      * @param isPrivate 是否私有
      */
     public void setIsPrivate(Integer isPrivate) {
@@ -142,6 +151,7 @@ public class Note {
 
     /**
      * 概要
+     *
      * @return profile 概要
      */
     public String getProfile() {
@@ -150,6 +160,7 @@ public class Note {
 
     /**
      * 概要
+     *
      * @param profile 概要
      */
     public void setProfile(String profile) {
@@ -158,6 +169,7 @@ public class Note {
 
     /**
      * 内容
+     *
      * @return content 内容
      */
     public String getContent() {
@@ -166,6 +178,7 @@ public class Note {
 
     /**
      * 内容
+     *
      * @param content 内容
      */
     public void setContent(String content) {
@@ -174,6 +187,7 @@ public class Note {
 
     /**
      * 创建时间
+     *
      * @return createTime 创建时间
      */
     public Date getCreateTime() {
@@ -182,6 +196,7 @@ public class Note {
 
     /**
      * 创建时间
+     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -190,6 +205,7 @@ public class Note {
 
     /**
      * 更新时间
+     *
      * @return updateTime 更新时间
      */
     public Date getUpdateTime() {
@@ -198,6 +214,7 @@ public class Note {
 
     /**
      * 更新时间
+     *
      * @param updateTime 更新时间
      */
     public void setUpdateTime(Date updateTime) {
@@ -206,6 +223,7 @@ public class Note {
 
     /**
      * 阅读数
+     *
      * @return readCount 阅读数
      */
     public Integer getReadCount() {
@@ -214,6 +232,7 @@ public class Note {
 
     /**
      * 阅读数
+     *
      * @param readCount 阅读数
      */
     public void setReadCount(Integer readCount) {
@@ -222,6 +241,7 @@ public class Note {
 
     /**
      * 评论数
+     *
      * @return commenCount 评论数
      */
     public Integer getCommenCount() {
@@ -230,6 +250,7 @@ public class Note {
 
     /**
      * 评论数
+     *
      * @param commenCount 评论数
      */
     public void setCommenCount(Integer commenCount) {
@@ -238,6 +259,7 @@ public class Note {
 
     /**
      * 分享数
+     *
      * @return shareCount 分享数
      */
     public Integer getShareCount() {
@@ -246,6 +268,7 @@ public class Note {
 
     /**
      * 分享数
+     *
      * @param shareCount 分享数
      */
     public void setShareCount(Integer shareCount) {
