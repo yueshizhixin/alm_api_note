@@ -18,9 +18,8 @@ public class NoteServiceImplTest {
     @Resource
     private NoteService noteService;
 
-
     @Test
-    public void getPulicNoteByTagId() {
-        System.out.println(JSONUtil.format(noteService.getPulicNoteByTagId(1)));
+    public void getTags() {
+        System.out.println(JSONUtil.format(noteService.getTags()));
     }
 }

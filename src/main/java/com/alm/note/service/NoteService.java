@@ -1,7 +1,5 @@
 package com.alm.note.service;
 
-
-import com.alm.note.po.Note;
 import com.alm.note.po.NoteTag;
 
 import java.util.List;
@@ -15,9 +13,9 @@ import java.util.List;
 public interface NoteService {
 
     /**
-     * 根据tag获取note
+     * 获取所有标签
+     *
      * @return
      */
-    public List<Note> getPulicNoteByTagId(int id);
-
+    public List<NoteTag> getTags();
 }

@@ -73,7 +73,7 @@ public class NoteTagExample {
     }
 
     /**
-     * 笔记标签表 2019-01-14
+     * 笔记标签表 2019-01-17
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -176,183 +176,253 @@ public class NoteTagExample {
             return (Criteria) this;
         }
 
-        public Criteria andTagIdIsNull() {
-            addCriterion("tagId is null");
+        public Criteria andParentIdIsNull() {
+            addCriterion("parentId is null");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdIsNotNull() {
-            addCriterion("tagId is not null");
+        public Criteria andParentIdIsNotNull() {
+            addCriterion("parentId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdEqualTo(Integer value) {
-            addCriterion("tagId =", value, "tagId");
+        public Criteria andParentIdEqualTo(Integer value) {
+            addCriterion("parentId =", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdNotEqualTo(Integer value) {
-            addCriterion("tagId <>", value, "tagId");
+        public Criteria andParentIdNotEqualTo(Integer value) {
+            addCriterion("parentId <>", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdGreaterThan(Integer value) {
-            addCriterion("tagId >", value, "tagId");
+        public Criteria andParentIdGreaterThan(Integer value) {
+            addCriterion("parentId >", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("tagId >=", value, "tagId");
+        public Criteria andParentIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("parentId >=", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdLessThan(Integer value) {
-            addCriterion("tagId <", value, "tagId");
+        public Criteria andParentIdLessThan(Integer value) {
+            addCriterion("parentId <", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdLessThanOrEqualTo(Integer value) {
-            addCriterion("tagId <=", value, "tagId");
+        public Criteria andParentIdLessThanOrEqualTo(Integer value) {
+            addCriterion("parentId <=", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdIn(List<Integer> values) {
-            addCriterion("tagId in", values, "tagId");
+        public Criteria andParentIdIn(List<Integer> values) {
+            addCriterion("parentId in", values, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdNotIn(List<Integer> values) {
-            addCriterion("tagId not in", values, "tagId");
+        public Criteria andParentIdNotIn(List<Integer> values) {
+            addCriterion("parentId not in", values, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdBetween(Integer value1, Integer value2) {
-            addCriterion("tagId between", value1, value2, "tagId");
+        public Criteria andParentIdBetween(Integer value1, Integer value2) {
+            addCriterion("parentId between", value1, value2, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andTagIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("tagId not between", value1, value2, "tagId");
+        public Criteria andParentIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("parentId not between", value1, value2, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("userId is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("userId is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("userId =", value, "userId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("userId <>", value, "userId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("userId >", value, "userId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("userId >=", value, "userId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("userId <", value, "userId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("userId <=", value, "userId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("userId in", values, "userId");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("userId not in", values, "userId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("userId between", value1, value2, "userId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("userId not between", value1, value2, "userId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdIsNull() {
-            addCriterion("noteId is null");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdIsNotNull() {
-            addCriterion("noteId is not null");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdEqualTo(Long value) {
-            addCriterion("noteId =", value, "noteId");
+        public Criteria andLayerIsNull() {
+            addCriterion("layer is null");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdNotEqualTo(Long value) {
-            addCriterion("noteId <>", value, "noteId");
+        public Criteria andLayerIsNotNull() {
+            addCriterion("layer is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdGreaterThan(Long value) {
-            addCriterion("noteId >", value, "noteId");
+        public Criteria andLayerEqualTo(Integer value) {
+            addCriterion("layer =", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("noteId >=", value, "noteId");
+        public Criteria andLayerNotEqualTo(Integer value) {
+            addCriterion("layer <>", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdLessThan(Long value) {
-            addCriterion("noteId <", value, "noteId");
+        public Criteria andLayerGreaterThan(Integer value) {
+            addCriterion("layer >", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdLessThanOrEqualTo(Long value) {
-            addCriterion("noteId <=", value, "noteId");
+        public Criteria andLayerGreaterThanOrEqualTo(Integer value) {
+            addCriterion("layer >=", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdIn(List<Long> values) {
-            addCriterion("noteId in", values, "noteId");
+        public Criteria andLayerLessThan(Integer value) {
+            addCriterion("layer <", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdNotIn(List<Long> values) {
-            addCriterion("noteId not in", values, "noteId");
+        public Criteria andLayerLessThanOrEqualTo(Integer value) {
+            addCriterion("layer <=", value, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdBetween(Long value1, Long value2) {
-            addCriterion("noteId between", value1, value2, "noteId");
+        public Criteria andLayerIn(List<Integer> values) {
+            addCriterion("layer in", values, "layer");
             return (Criteria) this;
         }
 
-        public Criteria andNoteIdNotBetween(Long value1, Long value2) {
-            addCriterion("noteId not between", value1, value2, "noteId");
+        public Criteria andLayerNotIn(List<Integer> values) {
+            addCriterion("layer not in", values, "layer");
+            return (Criteria) this;
+        }
+
+        public Criteria andLayerBetween(Integer value1, Integer value2) {
+            addCriterion("layer between", value1, value2, "layer");
+            return (Criteria) this;
+        }
+
+        public Criteria andLayerNotBetween(Integer value1, Integer value2) {
+            addCriterion("layer not between", value1, value2, "layer");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceIsNull() {
+            addCriterion("sequence is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceIsNotNull() {
+            addCriterion("sequence is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceEqualTo(Integer value) {
+            addCriterion("sequence =", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceNotEqualTo(Integer value) {
+            addCriterion("sequence <>", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceGreaterThan(Integer value) {
+            addCriterion("sequence >", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sequence >=", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceLessThan(Integer value) {
+            addCriterion("sequence <", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceLessThanOrEqualTo(Integer value) {
+            addCriterion("sequence <=", value, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceIn(List<Integer> values) {
+            addCriterion("sequence in", values, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceNotIn(List<Integer> values) {
+            addCriterion("sequence not in", values, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceBetween(Integer value1, Integer value2) {
+            addCriterion("sequence between", value1, value2, "sequence");
+            return (Criteria) this;
+        }
+
+        public Criteria andSequenceNotBetween(Integer value1, Integer value2) {
+            addCriterion("sequence not between", value1, value2, "sequence");
             return (Criteria) this;
         }
     }
@@ -368,7 +438,7 @@ public class NoteTagExample {
     }
 
     /**
-     * 笔记标签表 2019-01-14
+     * 笔记标签表 2019-01-17
      */
     public static class Criterion {
         private String condition;

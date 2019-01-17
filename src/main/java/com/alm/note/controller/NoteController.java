@@ -1,15 +1,9 @@
 package com.alm.note.controller;
 
 import com.alm.note.service.NoteService;
-import com.alm.system.authority.Authority;
-import com.alm.system.enume.SessionEnum;
-import com.alm.user.po.User;
 import com.alm.util.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,7 +12,7 @@ import javax.servlet.http.HttpSession;
  * <p>desc: </p>
  */
 @RestController
-@RequestMapping("/api/v1/note")
+@RequestMapping("/api/v1")
 public class NoteController {
 
     private final NoteService noteService;
@@ -28,6 +22,10 @@ public class NoteController {
         this.noteService = noteService;
     }
 
+    @RequestMapping(value = "/tag", method = {RequestMethod.GET})
+    public String getTags() {
+        return RESTUtil.HTTP200(noteService.getTags());
+    }
 
 
 }

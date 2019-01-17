@@ -2,10 +2,7 @@ package com.alm.note.mapper;
 
 import com.alm.note.po.NoteTag;
 import com.alm.note.po.NoteTagExample;
-
 import java.util.List;
-
-import com.alm.user.po.UserTag;
 import org.apache.ibatis.annotations.Param;
 
 public interface NoteTagMapper {

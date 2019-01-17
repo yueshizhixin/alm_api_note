@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  <p>table  用户表</p>
  <p>author lishuai</p>
- <p>time   2019-01-10</p>
+ <p>time   2019-01-17</p>
 */
 public class User {
     /**
