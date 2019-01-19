@@ -11,6 +11,7 @@ import com.alm.util.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -37,11 +38,9 @@ public class UserController {
     @RequestMapping(value = "/user/tag=signIn", method = {RequestMethod.POST})
     public String userTag(@ModelAttribute User u, HttpSession session, @RequestParam String captcha) {
         Object c = session.getAttribute(CaptchaEnum.type.IMG.getValue());
-        System.out.println("c = " + c);
         if (c == null || c.toString().trim().equals("")) {
             return RESTUtil.HTTP200(0, "验证码异常");
         }
-        System.out.println("captcha = " + captcha);
         if (captcha == null || captcha.equals("")) {
             return RESTUtil.HTTP200(0, "验证码未填写");
         }
@@ -49,6 +48,7 @@ public class UserController {
             return RESTUtil.HTTP200(0, "验证码错误");
         }
         Message msg = userService.signIn(u);
+        System.out.println(4);
         if (msg.getOk() == 1) {
             User user = userService.selectUserByAcc(u.getAcc()).get(0);
             session.setAttribute(SessionEnum.user.getValue(), user);

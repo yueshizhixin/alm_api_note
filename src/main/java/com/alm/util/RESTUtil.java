@@ -1,7 +1,6 @@
 package com.alm.util;
 
 
-import com.alm.system.tip.GlobalTip;
 import com.alm.system.vo.Message;
 import com.github.pagehelper.Page;
 import com.sun.deploy.util.StringUtils;
@@ -49,11 +48,11 @@ public class RESTUtil {
     private static String TIP500 = Exception.class.getName();
 
     public static <T> String HTTP401() {
-        return format(401, 0, null, null, null);
+        return format(401, 0, "请登录", null, null);
     }
 
     public static <T> String HTTP403() {
-        return format(401, 0, null, null, null);
+        return format(403, 0, "请登录", null, null);
     }
 
     public static <T> String HTTP500() {

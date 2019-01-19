@@ -1,5 +1,6 @@
 package com.alm.note.service.impl;
 
+import com.alm.note.po.Note;
 import com.alm.note.service.NoteService;
 import com.alm.util.JSONUtil;
 import org.junit.Test;
@@ -21,5 +22,13 @@ public class NoteServiceImplTest {
     @Test
     public void getTags() {
         System.out.println(JSONUtil.format(noteService.getTags()));
+    }
+
+    @Test
+    public void mergeNote() {
+        Note note = new Note();
+        note.setId(0L);
+        note.setUserId(3L);
+        System.out.println(noteService.mergeNote(note));
     }
 }

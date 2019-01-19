@@ -1,5 +1,7 @@
 package com.alm.system.listener;
 
+import com.alm.system.GlobalDict;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -14,8 +16,10 @@ public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("====启动成功");
+        System.out.println("====初始化...");
+        GlobalDict.instance().init(sce.getServletContext());
 
+        System.out.println("====启动成功");
     }
 
     @Override
