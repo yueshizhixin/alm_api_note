@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.json.Json;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 /**
@@ -17,7 +19,12 @@ import java.util.Arrays;
 public class JSONUtil {
 
     private static final Logger LOGGER = LogManager.getLogger(JSONUtil.class);
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static ObjectMapper objectMapper;
+
+    static {
+        objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+    }
 
     /**
      * json序列化

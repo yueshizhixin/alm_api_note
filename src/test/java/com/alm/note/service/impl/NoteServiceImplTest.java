@@ -31,4 +31,9 @@ public class NoteServiceImplTest {
         note.setUserId(3L);
         System.out.println(noteService.mergeNote(note));
     }
+
+    @Test
+    public void getNoteById() {
+        System.out.println(JSONUtil.format(noteService.getNoteById(7892536832032768L)));
+    }
 }

@@ -16,10 +16,15 @@ public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("====初始化...");
-        GlobalDict.instance().init(sce.getServletContext());
+        try {
+            System.out.println("====初始化...");
+            GlobalDict.instance().init(sce.getServletContext());
 
-        System.out.println("====启动成功");
+            System.out.println("====启动成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
     }
 
     @Override

@@ -3,12 +3,14 @@ package com.alm.note.service.impl;
 import com.alm.note.mapper.NoteMapper;
 import com.alm.note.mapper.NoteTagMapper;
 import com.alm.note.po.Note;
+import com.alm.note.po.NoteExample;
 import com.alm.note.po.NoteTag;
 import com.alm.note.po.NoteTagExample;
 import com.alm.note.service.NoteService;
 import com.alm.system.snowFlake.SnowFlake;
 import com.alm.system.vo.Message;
 import com.alm.util.DateUtil;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +45,7 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public List<NoteTag> getTags() {
         NoteTagExample example = new NoteTagExample();
-        example.setOrderByClause("sequence asc");
+        example.setOrderByClause("layer asc,sequence desc");
         return noteTagMapper.selectByExample(example);
     }
 
@@ -80,5 +82,20 @@ public class NoteServiceImpl implements NoteService {
             return null;
         }
         return noteMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 获取所有笔记
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @Override
+    public List<Note> getNotes(int offset, int limit) {
+        NoteExample example = new NoteExample();
+        example.setOrderByClause("updateTime desc");
+        PageHelper.startPage(offset, limit);
+        return noteMapper.selectByExample(example);
     }
 }

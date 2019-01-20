@@ -48,7 +48,8 @@
                     <property name="properties">
                         <value>
                             helperDialect=mysql
-                            reasonable=true
+                            <!--真实分页-->
+                            <!--reasonable=true-->
                         </value>
                     </property>
                 </bean>

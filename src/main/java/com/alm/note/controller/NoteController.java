@@ -51,6 +51,8 @@ public class NoteController {
     public String mergeNote(@ModelAttribute Note note, HttpSession session) {
         User user = (User) session.getAttribute(SessionEnum.user.getValue());
         note.setUserId(user.getId());
+        note.setCreateTime(null);
+        note.setUpdateTime(null);
         return RESTUtil.Message(noteService.mergeNote(note));
     }
 
@@ -61,12 +63,17 @@ public class NoteController {
      * @return
      */
     @RequestMapping(value = "/note/{id}", method = RequestMethod.GET)
-    public String getNote(@ModelAttribute Note note) {
+    public String getNoteById(@ModelAttribute Note note) {
         Note n = noteService.getNoteById(note.getId());
         if (n == null || n.getId() == null) {
             return RESTUtil.HTTP200(0, "不存在");
         }
         return RESTUtil.HTTP200(n);
+    }
+
+    @RequestMapping(value = "/note", method = RequestMethod.GET)
+    public String getNote(@RequestParam int offset, @RequestParam int limit) {
+        return RESTUtil.HTTP200(noteService.getNotes(offset, limit));
     }
 
 }

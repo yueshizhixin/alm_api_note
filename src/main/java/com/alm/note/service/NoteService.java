@@ -36,4 +36,13 @@ public interface NoteService {
      * @return
      */
     public Note getNoteById(Long id);
+
+    /**
+     * 获取所有笔记
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    public List<Note> getNotes(int offset, int limit);
 }
