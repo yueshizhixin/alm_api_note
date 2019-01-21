@@ -72,8 +72,8 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/note", method = RequestMethod.GET)
-    public String getNote(@RequestParam int offset, @RequestParam int limit) {
-        return RESTUtil.HTTP200(noteService.getNotes(offset, limit));
+    public String getNote(@RequestParam int offset, @RequestParam int limit, @RequestParam int tagId1, @RequestParam int tagId2) {
+        return RESTUtil.HTTP200(noteService.getNotes(offset, limit, tagId1, tagId2));
     }
 
 }

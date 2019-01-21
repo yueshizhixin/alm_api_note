@@ -92,8 +92,12 @@ public class NoteServiceImpl implements NoteService {
      * @return
      */
     @Override
-    public List<Note> getNotes(int offset, int limit) {
+    public List<Note> getNotes(int offset, int limit, int tagId1, int tagId2) {
         NoteExample example = new NoteExample();
+        NoteExample.Criteria criteria = example.createCriteria();
+        if (tagId1 > 0 || tagId2 > 0) {
+            criteria.andTagId1EqualTo(tagId1).andTagId2EqualTo(tagId2);
+        }
         example.setOrderByClause("updateTime desc");
         PageHelper.startPage(offset, limit);
         return noteMapper.selectByExample(example);

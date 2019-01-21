@@ -44,5 +44,5 @@ public interface NoteService {
      * @param limit
      * @return
      */
-    public List<Note> getNotes(int offset, int limit);
+    public List<Note> getNotes(int offset, int limit, int tagId1, int tagId2);
 }

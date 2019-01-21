@@ -3,7 +3,6 @@ package com.alm.util;
 
 import com.alm.system.vo.Message;
 import com.github.pagehelper.Page;
-import com.sun.deploy.util.StringUtils;
 
 /**
  * Created by IntelliJ IDEA.
