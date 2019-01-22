@@ -58,9 +58,10 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!--allowed-origins http://127.0.0.1,http://127.0.0.1-->
     <mvc:cors>
         <mvc:mapping path="/api/**"
-                     allowed-origins="http://127.0.0.1,http://127.0.0.1:8080"
+                     allowed-origins="http://127.0.0.1"
                      allowed-methods="*"
                      allow-credentials="true"
         />
