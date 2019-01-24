@@ -1,5 +1,6 @@
 package com.alm.system.controller;
 
+import com.alm.system.authority.Authority;
 import com.alm.util.PropQiniuUtil;
 import com.alm.util.RESTUtil;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class FileController {
      * 获取token
      * 优化 时间计时器自动获取
      */
+    @Authority
     @RequestMapping(value = "/cdn/token", method = RequestMethod.GET)
     public String getUpToken() {
         return RESTUtil.HTTP200(auth.uploadToken(bucketname, null, 30, new StringMap().put("insertOnly", 1)));
