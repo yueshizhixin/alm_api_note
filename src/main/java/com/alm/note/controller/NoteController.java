@@ -10,6 +10,7 @@ import com.alm.util.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -31,12 +32,21 @@ public class NoteController {
 
     /**
      * 获取标签
-     *
-     * @return
      */
     @RequestMapping(value = "/tag", method = {RequestMethod.GET})
     public String getTags() {
         return RESTUtil.HTTP200(GlobalDict.instance().getMap().get("tags"));
+    }
+
+    /**
+     * 保存标签
+     */
+    @Authority
+    @RequestMapping(value = "/tag", method = RequestMethod.POST)
+    public String addTag(@RequestParam int layer, @RequestParam int tagId1, @RequestParam String tagName, HttpServletRequest req) {
+        noteService.insertTag(layer, tagId1, tagName);
+        GlobalDict.instance().updateTag(req.getServletContext());
+        return RESTUtil.HTTP200(1, "操作成功");
     }
 
     /**
@@ -71,9 +81,19 @@ public class NoteController {
         return RESTUtil.HTTP200(n);
     }
 
+    /**
+     * 笔记列表
+     *
+     * @param offset
+     * @param limit
+     * @param tagId1
+     * @param tagId2
+     * @return
+     */
     @RequestMapping(value = "/note", method = RequestMethod.GET)
     public String getNote(@RequestParam int offset, @RequestParam int limit, @RequestParam int tagId1, @RequestParam int tagId2) {
         return RESTUtil.HTTP200(noteService.getNotes(offset, limit, tagId1, tagId2));
     }
+
 
 }

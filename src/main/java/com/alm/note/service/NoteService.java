@@ -45,4 +45,9 @@ public interface NoteService {
      * @return
      */
     public List<Note> getNotes(int offset, int limit, int tagId1, int tagId2);
+
+    /**
+     * 添加标签
+     */
+    public void insertTag(int layer, int tagId1, String tagName);
 }

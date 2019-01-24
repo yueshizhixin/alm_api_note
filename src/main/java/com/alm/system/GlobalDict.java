@@ -45,6 +45,15 @@ public class GlobalDict {
 
     public void init(ServletContext sc) {
         NoteService noteService = (NoteService) WebApplicationContextUtils.getWebApplicationContext(sc).getBean("noteService");
+        updateTag(noteService);
+    }
+
+    public void updateTag(ServletContext sc) {
+        NoteService noteService = (NoteService) WebApplicationContextUtils.getWebApplicationContext(sc).getBean("noteService");
+        updateTag(noteService);
+    }
+
+    private void updateTag(NoteService noteService) {
         map.put("tags", noteService.getTags());
     }
 

@@ -102,4 +102,23 @@ public class NoteServiceImpl implements NoteService {
         PageHelper.startPage(offset, limit);
         return noteMapper.selectByExample(example);
     }
+
+    /**
+     * 添加标签
+     *
+     * @param layer
+     * @param tagId1
+     * @param tagName
+     */
+    @Override
+    public void insertTag(int layer, int tagId1, String tagName) {
+        NoteTag tag = new NoteTag();
+        tag.setLayer(layer);
+        tag.setName(tagName);
+        tag.setSequence(0);
+        if (layer == 2) {
+            tag.setParentId(tagId1);
+        }
+        noteTagMapper.insertSelective(tag);
+    }
 }
