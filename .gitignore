@@ -1,4 +1,5 @@
 /src/main/resources/mybatis/db.properties
 /src/main/resources/mybatis/generator-config.xml
+/src/main/resources/qiniu.properties
 /log/
 target.zip
