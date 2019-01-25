@@ -3,26 +3,11 @@ package com.alm.system.controller;
 import com.alm.system.authority.Authority;
 import com.alm.util.PropQiniuUtil;
 import com.alm.util.RESTUtil;
-import com.google.gson.Gson;
-import com.qiniu.common.QiniuException;
-import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
-import com.qiniu.storage.Configuration;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
-import com.qiniu.util.Base64;
 import com.qiniu.util.StringMap;
-import com.qiniu.util.UrlSafeBase64;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.File;
-import java.io.FileInputStream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -41,7 +26,7 @@ public class FileController {
 
     /**
      * 获取token
-     * 优化 时间计时器自动获取
+     * 优化 计时器自动获取
      */
     @Authority
     @RequestMapping(value = "/cdn/token", method = RequestMethod.GET)

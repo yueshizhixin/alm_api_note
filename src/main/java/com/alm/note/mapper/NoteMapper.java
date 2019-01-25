@@ -3,9 +3,14 @@ package com.alm.note.mapper;
 import com.alm.note.po.Note;
 import com.alm.note.po.NoteExample;
 import java.util.List;
+
+import com.alm.note.vo.NoteSimple;
 import org.apache.ibatis.annotations.Param;
 
 public interface NoteMapper {
+
+    List<NoteSimple> selectNoteSimpleByExample(NoteExample example);
+
     long countByExample(NoteExample example);
 
     int deleteByExample(NoteExample example);

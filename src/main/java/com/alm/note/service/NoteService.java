@@ -2,6 +2,7 @@ package com.alm.note.service;
 
 import com.alm.note.po.Note;
 import com.alm.note.po.NoteTag;
+import com.alm.note.vo.NoteSimple;
 import com.alm.system.vo.Message;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface NoteService {
      *
      * @return
      */
-    public List<NoteTag> getTags();
+    List<NoteTag> getTags();
 
     /**
      * 新增或保存笔记
@@ -27,7 +28,7 @@ public interface NoteService {
      * @param note
      * @return
      */
-    public Message mergeNote(Note note);
+    Message mergeNote(Note note);
 
     /**
      * 获取笔记
@@ -35,7 +36,7 @@ public interface NoteService {
      * @param id
      * @return
      */
-    public Note getNoteById(Long id);
+    Note getNoteById(Long id);
 
     /**
      * 获取所有笔记
@@ -44,10 +45,19 @@ public interface NoteService {
      * @param limit
      * @return
      */
-    public List<Note> getNotes(int offset, int limit, int tagId1, int tagId2);
+    List<Note> getNotes(int offset, int limit, int tagId1, int tagId2);
+
+    /**
+     * 获取所有笔记
+     *
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<NoteSimple> getNoteSimples(int offset, int limit, int tagId1, int tagId2);
 
     /**
      * 添加标签
      */
-    public void insertTag(int layer, int tagId1, String tagName);
+    void insertTag(int layer, int tagId1, String tagName);
 }

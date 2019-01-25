@@ -3,6 +3,7 @@ package com.alm.note.service.impl;
 import com.alm.note.po.Note;
 import com.alm.note.service.NoteService;
 import com.alm.util.JSONUtil;
+import com.alm.util.RESTUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -35,5 +36,11 @@ public class NoteServiceImplTest {
     @Test
     public void getNoteById() {
         System.out.println(JSONUtil.format(noteService.getNoteById(7892536832032768L)));
+    }
+
+    @Test
+    public void getNoteSimples() {
+//        System.out.println(RESTUtil.HTTP200(noteService.getNotes(1, 10, 0, 0)));
+        System.out.println(RESTUtil.HTTP200(noteService.getNoteSimples(1, 1, 0, 0)));
     }
 }

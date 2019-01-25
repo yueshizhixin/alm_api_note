@@ -51,10 +51,6 @@ public class NoteController {
 
     /**
      * 新增或更新筆記
-     *
-     * @param note
-     * @param session
-     * @return
      */
     @Authority
     @RequestMapping(value = "/note/{id}", method = RequestMethod.POST)
@@ -68,9 +64,6 @@ public class NoteController {
 
     /**
      * 获取某個筆記
-     *
-     * @param note
-     * @return
      */
     @RequestMapping(value = "/note/{id}", method = RequestMethod.GET)
     public String getNoteById(@ModelAttribute Note note) {
@@ -83,16 +76,10 @@ public class NoteController {
 
     /**
      * 笔记列表
-     *
-     * @param offset
-     * @param limit
-     * @param tagId1
-     * @param tagId2
-     * @return
      */
     @RequestMapping(value = "/note", method = RequestMethod.GET)
-    public String getNote(@RequestParam int offset, @RequestParam int limit, @RequestParam int tagId1, @RequestParam int tagId2) {
-        return RESTUtil.HTTP200(noteService.getNotes(offset, limit, tagId1, tagId2));
+    public String getNoteSimpleList(@RequestParam int offset, @RequestParam int limit, @RequestParam int tagId1, @RequestParam int tagId2) {
+        return RESTUtil.HTTP200(noteService.getNoteSimples(offset, limit, tagId1, tagId2));
     }
 
 

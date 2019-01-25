@@ -41,8 +41,9 @@ public class JSONUtil {
             return objectMapper.writeValueAsString(t);
         } catch (JsonProcessingException e) {
             LOGGER.error("\n===异常开始\tjson转化错误");
-            LOGGER.error(e);
-            Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
+            e.printStackTrace();
+//            LOGGER.error(e);
+//            Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
             LOGGER.error("\n===异常结束");
             return null;
         }

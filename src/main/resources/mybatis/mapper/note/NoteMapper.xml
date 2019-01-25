@@ -1,116 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alm.note.mapper.NoteMapper">
-  <resultMap id="BaseResultMap" type="com.alm.note.po.Note">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="userId" jdbcType="BIGINT" property="userId" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="isPrivate" jdbcType="INTEGER" property="isPrivate" />
-    <result column="profile" jdbcType="VARCHAR" property="profile" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="tagId1" jdbcType="INTEGER" property="tagId1" />
-    <result column="tagName1" jdbcType="VARCHAR" property="tagName1" />
-    <result column="tagId2" jdbcType="INTEGER" property="tagId2" />
-    <result column="tagName2" jdbcType="VARCHAR" property="tagName2" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="readCount" jdbcType="INTEGER" property="readCount" />
-    <result column="commenCount" jdbcType="INTEGER" property="commenCount" />
-    <result column="shareCount" jdbcType="INTEGER" property="shareCount" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
+    <!--noteSimple-->
+    <resultMap id="NoteSimpleMap" type="com.alm.note.vo.NoteSimple">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="profile" jdbcType="VARCHAR" property="profile"/>
+        <result column="tagName1" jdbcType="VARCHAR" property="tagName1"/>
+        <result column="tagName2" jdbcType="VARCHAR" property="tagName2"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <select id="selectNoteSimpleByExample" parameterType="com.alm.note.po.NoteExample" resultMap="NoteSimpleMap">
+        select
+        id,title,profile,tagName1,tagName2,updateTime
+        from t_note
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
+    </select>
+
+    <!--自动生成-->
+    <resultMap id="BaseResultMap" type="com.alm.note.po.Note">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="userId" jdbcType="BIGINT" property="userId"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="isPrivate" jdbcType="INTEGER" property="isPrivate"/>
+        <result column="profile" jdbcType="VARCHAR" property="profile"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="tagId1" jdbcType="INTEGER" property="tagId1"/>
+        <result column="tagName1" jdbcType="VARCHAR" property="tagName1"/>
+        <result column="tagId2" jdbcType="INTEGER" property="tagId2"/>
+        <result column="tagName2" jdbcType="VARCHAR" property="tagName2"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="readCount" jdbcType="INTEGER" property="readCount"/>
+        <result column="commenCount" jdbcType="INTEGER" property="commenCount"/>
+        <result column="shareCount" jdbcType="INTEGER" property="shareCount"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, userId, title, isPrivate, profile, content, tagId1, tagName1, tagId2, tagName2, 
     createTime, updateTime, readCount, commenCount, shareCount
   </sql>
-  <select id="selectByExample" parameterType="com.alm.note.po.NoteExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from t_note
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_note
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByExample" parameterType="com.alm.note.po.NoteExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from t_note
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_note
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_note
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.alm.note.po.NoteExample">
-    delete from t_note
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.alm.note.po.Note">
+    <delete id="deleteByExample" parameterType="com.alm.note.po.NoteExample">
+        delete from t_note
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.alm.note.po.Note">
     insert into t_note (id, userId, title, 
       isPrivate, profile, content, 
       tagId1, tagName1, tagId2, 
@@ -124,232 +148,232 @@
       #{readCount,jdbcType=INTEGER}, #{commenCount,jdbcType=INTEGER}, #{shareCount,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.alm.note.po.Note">
-    insert into t_note
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="userId != null">
-        userId,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="isPrivate != null">
-        isPrivate,
-      </if>
-      <if test="profile != null">
-        profile,
-      </if>
-      <if test="content != null">
-        content,
-      </if>
-      <if test="tagId1 != null">
-        tagId1,
-      </if>
-      <if test="tagName1 != null">
-        tagName1,
-      </if>
-      <if test="tagId2 != null">
-        tagId2,
-      </if>
-      <if test="tagName2 != null">
-        tagName2,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="readCount != null">
-        readCount,
-      </if>
-      <if test="commenCount != null">
-        commenCount,
-      </if>
-      <if test="shareCount != null">
-        shareCount,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="isPrivate != null">
-        #{isPrivate,jdbcType=INTEGER},
-      </if>
-      <if test="profile != null">
-        #{profile,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="tagId1 != null">
-        #{tagId1,jdbcType=INTEGER},
-      </if>
-      <if test="tagName1 != null">
-        #{tagName1,jdbcType=VARCHAR},
-      </if>
-      <if test="tagId2 != null">
-        #{tagId2,jdbcType=INTEGER},
-      </if>
-      <if test="tagName2 != null">
-        #{tagName2,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="readCount != null">
-        #{readCount,jdbcType=INTEGER},
-      </if>
-      <if test="commenCount != null">
-        #{commenCount,jdbcType=INTEGER},
-      </if>
-      <if test="shareCount != null">
-        #{shareCount,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.alm.note.po.NoteExample" resultType="java.lang.Long">
-    select count(*) from t_note
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update t_note
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.userId != null">
+    <insert id="insertSelective" parameterType="com.alm.note.po.Note">
+        insert into t_note
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                userId,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="isPrivate != null">
+                isPrivate,
+            </if>
+            <if test="profile != null">
+                profile,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="tagId1 != null">
+                tagId1,
+            </if>
+            <if test="tagName1 != null">
+                tagName1,
+            </if>
+            <if test="tagId2 != null">
+                tagId2,
+            </if>
+            <if test="tagName2 != null">
+                tagName2,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="readCount != null">
+                readCount,
+            </if>
+            <if test="commenCount != null">
+                commenCount,
+            </if>
+            <if test="shareCount != null">
+                shareCount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="isPrivate != null">
+                #{isPrivate,jdbcType=INTEGER},
+            </if>
+            <if test="profile != null">
+                #{profile,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="tagId1 != null">
+                #{tagId1,jdbcType=INTEGER},
+            </if>
+            <if test="tagName1 != null">
+                #{tagName1,jdbcType=VARCHAR},
+            </if>
+            <if test="tagId2 != null">
+                #{tagId2,jdbcType=INTEGER},
+            </if>
+            <if test="tagName2 != null">
+                #{tagName2,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="readCount != null">
+                #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="commenCount != null">
+                #{commenCount,jdbcType=INTEGER},
+            </if>
+            <if test="shareCount != null">
+                #{shareCount,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.alm.note.po.NoteExample" resultType="java.lang.Long">
+        select count(*) from t_note
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update t_note
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.userId != null">
+                userId = #{record.userId,jdbcType=BIGINT},
+            </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.isPrivate != null">
+                isPrivate = #{record.isPrivate,jdbcType=INTEGER},
+            </if>
+            <if test="record.profile != null">
+                profile = #{record.profile,jdbcType=VARCHAR},
+            </if>
+            <if test="record.content != null">
+                content = #{record.content,jdbcType=VARCHAR},
+            </if>
+            <if test="record.tagId1 != null">
+                tagId1 = #{record.tagId1,jdbcType=INTEGER},
+            </if>
+            <if test="record.tagName1 != null">
+                tagName1 = #{record.tagName1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.tagId2 != null">
+                tagId2 = #{record.tagId2,jdbcType=INTEGER},
+            </if>
+            <if test="record.tagName2 != null">
+                tagName2 = #{record.tagName2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                createTime = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.readCount != null">
+                readCount = #{record.readCount,jdbcType=INTEGER},
+            </if>
+            <if test="record.commenCount != null">
+                commenCount = #{record.commenCount,jdbcType=INTEGER},
+            </if>
+            <if test="record.shareCount != null">
+                shareCount = #{record.shareCount,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update t_note
+        set id = #{record.id,jdbcType=BIGINT},
         userId = #{record.userId,jdbcType=BIGINT},
-      </if>
-      <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.isPrivate != null">
         isPrivate = #{record.isPrivate,jdbcType=INTEGER},
-      </if>
-      <if test="record.profile != null">
         profile = #{record.profile,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tagId1 != null">
         tagId1 = #{record.tagId1,jdbcType=INTEGER},
-      </if>
-      <if test="record.tagName1 != null">
         tagName1 = #{record.tagName1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tagId2 != null">
         tagId2 = #{record.tagId2,jdbcType=INTEGER},
-      </if>
-      <if test="record.tagName2 != null">
         tagName2 = #{record.tagName2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updateTime != null">
         updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.readCount != null">
         readCount = #{record.readCount,jdbcType=INTEGER},
-      </if>
-      <if test="record.commenCount != null">
         commenCount = #{record.commenCount,jdbcType=INTEGER},
-      </if>
-      <if test="record.shareCount != null">
-        shareCount = #{record.shareCount,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update t_note
-    set id = #{record.id,jdbcType=BIGINT},
-      userId = #{record.userId,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      isPrivate = #{record.isPrivate,jdbcType=INTEGER},
-      profile = #{record.profile,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      tagId1 = #{record.tagId1,jdbcType=INTEGER},
-      tagName1 = #{record.tagName1,jdbcType=VARCHAR},
-      tagId2 = #{record.tagId2,jdbcType=INTEGER},
-      tagName2 = #{record.tagName2,jdbcType=VARCHAR},
-      createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
-      readCount = #{record.readCount,jdbcType=INTEGER},
-      commenCount = #{record.commenCount,jdbcType=INTEGER},
-      shareCount = #{record.shareCount,jdbcType=INTEGER}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.alm.note.po.Note">
-    update t_note
-    <set>
-      <if test="userId != null">
-        userId = #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="isPrivate != null">
-        isPrivate = #{isPrivate,jdbcType=INTEGER},
-      </if>
-      <if test="profile != null">
-        profile = #{profile,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="tagId1 != null">
-        tagId1 = #{tagId1,jdbcType=INTEGER},
-      </if>
-      <if test="tagName1 != null">
-        tagName1 = #{tagName1,jdbcType=VARCHAR},
-      </if>
-      <if test="tagId2 != null">
-        tagId2 = #{tagId2,jdbcType=INTEGER},
-      </if>
-      <if test="tagName2 != null">
-        tagName2 = #{tagName2,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        updateTime = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="readCount != null">
-        readCount = #{readCount,jdbcType=INTEGER},
-      </if>
-      <if test="commenCount != null">
-        commenCount = #{commenCount,jdbcType=INTEGER},
-      </if>
-      <if test="shareCount != null">
-        shareCount = #{shareCount,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.alm.note.po.Note">
+        shareCount = #{record.shareCount,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.alm.note.po.Note">
+        update t_note
+        <set>
+            <if test="userId != null">
+                userId = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="isPrivate != null">
+                isPrivate = #{isPrivate,jdbcType=INTEGER},
+            </if>
+            <if test="profile != null">
+                profile = #{profile,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="tagId1 != null">
+                tagId1 = #{tagId1,jdbcType=INTEGER},
+            </if>
+            <if test="tagName1 != null">
+                tagName1 = #{tagName1,jdbcType=VARCHAR},
+            </if>
+            <if test="tagId2 != null">
+                tagId2 = #{tagId2,jdbcType=INTEGER},
+            </if>
+            <if test="tagName2 != null">
+                tagName2 = #{tagName2,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="readCount != null">
+                readCount = #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="commenCount != null">
+                commenCount = #{commenCount,jdbcType=INTEGER},
+            </if>
+            <if test="shareCount != null">
+                shareCount = #{shareCount,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.alm.note.po.Note">
     update t_note
     set userId = #{userId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},

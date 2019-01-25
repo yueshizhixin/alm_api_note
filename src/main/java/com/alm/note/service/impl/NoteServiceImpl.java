@@ -7,6 +7,7 @@ import com.alm.note.po.NoteExample;
 import com.alm.note.po.NoteTag;
 import com.alm.note.po.NoteTagExample;
 import com.alm.note.service.NoteService;
+import com.alm.note.vo.NoteSimple;
 import com.alm.system.snowFlake.SnowFlake;
 import com.alm.system.vo.Message;
 import com.alm.util.DateUtil;
@@ -86,13 +87,25 @@ public class NoteServiceImpl implements NoteService {
 
     /**
      * 获取所有笔记
-     *
-     * @param offset
-     * @param limit
-     * @return
      */
     @Override
     public List<Note> getNotes(int offset, int limit, int tagId1, int tagId2) {
+        return null;
+//        NoteExample example = new NoteExample();
+//        NoteExample.Criteria criteria = example.createCriteria();
+//        if (tagId1 > 0 || tagId2 > 0) {
+//            criteria.andTagId1EqualTo(tagId1).andTagId2EqualTo(tagId2);
+//        }
+//        example.setOrderByClause("updateTime desc");
+//        PageHelper.startPage(offset, limit);
+//        return noteMapper.selectByExample(example);
+    }
+
+    /**
+     * 获取所有笔记
+     */
+    @Override
+    public List<NoteSimple> getNoteSimples(int offset, int limit, int tagId1, int tagId2) {
         NoteExample example = new NoteExample();
         NoteExample.Criteria criteria = example.createCriteria();
         if (tagId1 > 0 || tagId2 > 0) {
@@ -100,7 +113,7 @@ public class NoteServiceImpl implements NoteService {
         }
         example.setOrderByClause("updateTime desc");
         PageHelper.startPage(offset, limit);
-        return noteMapper.selectByExample(example);
+        return noteMapper.selectNoteSimpleByExample(example);
     }
 
     /**
