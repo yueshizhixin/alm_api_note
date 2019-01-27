@@ -27,10 +27,6 @@ public class NoteServiceImplTest {
 
     @Test
     public void mergeNote() {
-        Note note = new Note();
-        note.setId(0L);
-        note.setUserId(3L);
-        System.out.println(noteService.mergeNote(note));
     }
 
     @Test
