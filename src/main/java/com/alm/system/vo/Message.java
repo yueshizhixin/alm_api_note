@@ -1,6 +1,5 @@
 package com.alm.system.vo;
 
-import com.alm.system.tip.GlobalTip;
 import com.github.pagehelper.Page;
 
 /**
@@ -13,7 +12,7 @@ public class Message {
 
     private int code = 200;
     private int ok = 0;
-    private String msg = GlobalTip.COMM_FAIL;
+    private String msg = "操作失败";
     private Object data;
     private Page page;
 
@@ -24,7 +23,7 @@ public class Message {
     public Message(int ok) {
         this.ok = ok;
         if (ok == 1) {
-            this.msg = GlobalTip.COMM_SUCCESS;
+            this.msg = "操作成功";
         }
     }
 

@@ -10,7 +10,6 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.util.Auth;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,7 +26,7 @@ public class AssetController {
     private static String sk = PropQiniuUtil.getSK();
     private static Auth auth = Auth.create(ak, sk);
     private static String bucket = "alm-yszx";    //空间名
-    private static Configuration configuration = new Configuration(Zone.zone1());
+    private static Configuration configuration = new Configuration(getZone());
 
     /**
      * 获取背景
@@ -64,5 +63,18 @@ public class AssetController {
         StringBuilder sb = new StringBuilder();
         fileListIterator.forEachRemaining(x -> sb.append(JSONUtil.format(x)));
         return RESTUtil.HTTP200(sb.toString());
+    }
+
+    private static Zone getZone() {
+        return Zone.autoZone();
+//        if (PropQiniuUtil.getZONE() == 0) {
+//            return Zone.zone0();
+//        } else if (PropQiniuUtil.getZONE() == 1) {
+//            return Zone.zone1();
+//        } else if (PropQiniuUtil.getZONE() == 2) {
+//            return Zone.zone2();
+//        } else {
+//            return null;
+//        }
     }
 }

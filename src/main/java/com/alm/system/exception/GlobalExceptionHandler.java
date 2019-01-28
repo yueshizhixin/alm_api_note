@@ -1,6 +1,5 @@
 package com.alm.system.exception;
 
-import com.alm.system.tip.GlobalTip;
 import com.alm.util.RESTUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
