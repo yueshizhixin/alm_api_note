@@ -55,13 +55,4 @@ public class PropQiniuUtil {
         }
     }
 
-    public static Integer getZONE() {
-        try {
-            initializeCheck();
-            properties.load(inputStream);
-            return Integer.parseInt(properties.getProperty("zone", null));
-        } catch (Exception e) {
-            return -99;
-        }
-    }
 }

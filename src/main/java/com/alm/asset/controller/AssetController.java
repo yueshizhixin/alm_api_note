@@ -45,6 +45,15 @@ public class AssetController {
     }
 
     /**
+     * 获取其他
+     */
+    @RequestMapping(value = "/asset/other", method = RequestMethod.GET)
+    public String getOTHERList() {
+        return getList("asset/other/");
+    }
+
+
+    /**
      * 获取私密
      */
     @Authority
@@ -67,14 +76,5 @@ public class AssetController {
 
     private static Zone getZone() {
         return Zone.autoZone();
-//        if (PropQiniuUtil.getZONE() == 0) {
-//            return Zone.zone0();
-//        } else if (PropQiniuUtil.getZONE() == 1) {
-//            return Zone.zone1();
-//        } else if (PropQiniuUtil.getZONE() == 2) {
-//            return Zone.zone2();
-//        } else {
-//            return null;
-//        }
     }
 }
