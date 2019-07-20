@@ -37,7 +37,12 @@ public interface NoteService {
      * @return
      */
     Note getNoteById(Long id);
-
+    /**
+     * 获取笔记回调
+     *
+     * @return
+     */
+    void updateGetNoteByIdCallback(Note note);
     /**
      * 获取所有笔记
      *

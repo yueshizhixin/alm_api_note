@@ -83,10 +83,21 @@ public class NoteServiceImpl implements NoteService {
             return null;
         }
 
-        Note note=noteMapper.selectByPrimaryKey(id);
+        return noteMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 获取笔记回调
+     *
+     * @return
+     */
+    @Override
+    public void updateGetNoteByIdCallback(Note note) {
+        if (note == null) {
+            return;
+        }
         note.setReadCount(note.getReadCount()+1);
         noteMapper.updateByPrimaryKeySelective(note);
-        return note;
     }
 
     /**
