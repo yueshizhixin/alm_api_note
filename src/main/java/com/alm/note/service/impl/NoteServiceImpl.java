@@ -82,7 +82,11 @@ public class NoteServiceImpl implements NoteService {
         if (id == null || id <= 0) {
             return null;
         }
-        return noteMapper.selectByPrimaryKey(id);
+
+        Note note=noteMapper.selectByPrimaryKey(id);
+        note.setReadCount(note.getReadCount()+1);
+        noteMapper.updateByPrimaryKeySelective(note);
+        return note;
     }
 
     /**

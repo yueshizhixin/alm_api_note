@@ -68,6 +68,7 @@ public class NoteController {
     @RequestMapping(value = "/note/{id}", method = RequestMethod.GET)
     public String getNoteById(@ModelAttribute Note note) {
         Note n = noteService.getNoteById(note.getId());
+
         if (n == null || n.getId() == null) {
             return RESTUtil.HTTP200(0, "不存在");
         }
