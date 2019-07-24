@@ -46,6 +46,21 @@ public class NoteSimple {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
+    /**
+     * 是否置顶
+     */
+    private Integer isTop;
+
+    /**
+     * 显示索引
+     */
+    private Integer showIndex;
+
+    /**
+     * 阅读数
+     */
+    private Integer readCount;
+
     public Long getId() {
         return id;
     }
@@ -92,5 +107,29 @@ public class NoteSimple {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getIsTop() {
+        return isTop;
+    }
+
+    public void setIsTop(Integer isTop) {
+        this.isTop = isTop;
+    }
+
+    public Integer getShowIndex() {
+        return showIndex;
+    }
+
+    public void setShowIndex(Integer showIndex) {
+        this.showIndex = showIndex;
+    }
+
+    public Integer getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(Integer readCount) {
+        this.readCount = readCount;
     }
 }

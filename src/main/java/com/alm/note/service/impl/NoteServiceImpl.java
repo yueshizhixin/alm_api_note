@@ -126,7 +126,7 @@ public class NoteServiceImpl implements NoteService {
         if (tagId1 > 0 || tagId2 > 0) {
             criteria.andTagId1EqualTo(tagId1).andTagId2EqualTo(tagId2);
         }
-        example.setOrderByClause("updateTime desc");
+        example.setOrderByClause("isTop desc,showIndex desc,updateTime desc");
         PageHelper.startPage(offset, limit);
         return noteMapper.selectNoteSimpleByExample(example);
     }

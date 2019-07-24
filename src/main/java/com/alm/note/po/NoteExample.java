@@ -74,7 +74,7 @@ public class NoteExample {
     }
 
     /**
-     * 笔记表 2019-01-17
+     * 笔记表 2019-07-24
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -1066,6 +1066,126 @@ public class NoteExample {
             addCriterion("shareCount not between", value1, value2, "shareCount");
             return (Criteria) this;
         }
+
+        public Criteria andIsTopIsNull() {
+            addCriterion("isTop is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopIsNotNull() {
+            addCriterion("isTop is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopEqualTo(Integer value) {
+            addCriterion("isTop =", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopNotEqualTo(Integer value) {
+            addCriterion("isTop <>", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopGreaterThan(Integer value) {
+            addCriterion("isTop >", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopGreaterThanOrEqualTo(Integer value) {
+            addCriterion("isTop >=", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopLessThan(Integer value) {
+            addCriterion("isTop <", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopLessThanOrEqualTo(Integer value) {
+            addCriterion("isTop <=", value, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopIn(List<Integer> values) {
+            addCriterion("isTop in", values, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopNotIn(List<Integer> values) {
+            addCriterion("isTop not in", values, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopBetween(Integer value1, Integer value2) {
+            addCriterion("isTop between", value1, value2, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsTopNotBetween(Integer value1, Integer value2) {
+            addCriterion("isTop not between", value1, value2, "isTop");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexIsNull() {
+            addCriterion("showIndex is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexIsNotNull() {
+            addCriterion("showIndex is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexEqualTo(Integer value) {
+            addCriterion("showIndex =", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexNotEqualTo(Integer value) {
+            addCriterion("showIndex <>", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexGreaterThan(Integer value) {
+            addCriterion("showIndex >", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexGreaterThanOrEqualTo(Integer value) {
+            addCriterion("showIndex >=", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexLessThan(Integer value) {
+            addCriterion("showIndex <", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexLessThanOrEqualTo(Integer value) {
+            addCriterion("showIndex <=", value, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexIn(List<Integer> values) {
+            addCriterion("showIndex in", values, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexNotIn(List<Integer> values) {
+            addCriterion("showIndex not in", values, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexBetween(Integer value1, Integer value2) {
+            addCriterion("showIndex between", value1, value2, "showIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowIndexNotBetween(Integer value1, Integer value2) {
+            addCriterion("showIndex not between", value1, value2, "showIndex");
+            return (Criteria) this;
+        }
     }
 
     /**
@@ -1079,7 +1199,7 @@ public class NoteExample {
     }
 
     /**
-     * 笔记表 2019-01-17
+     * 笔记表 2019-07-24
      */
     public static class Criterion {
         private String condition;

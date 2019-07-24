@@ -1,13 +1,11 @@
 package com.alm.note.po;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 /**
  <p>table  笔记表</p>
  <p>author lishuai</p>
- <p>time   2019-01-17</p>
+ <p>time   2019-07-24</p>
 */
 public class Note {
     /**
@@ -63,13 +61,11 @@ public class Note {
     /**
      * 创建时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
      * 更新时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     /**
@@ -86,6 +82,16 @@ public class Note {
      * 分享数
      */
     private Integer shareCount;
+
+    /**
+     * 是否置顶
+     */
+    private Integer isTop;
+
+    /**
+     * 显示索引
+     */
+    private Integer showIndex;
 
     /**
      * 笔记id
@@ -325,5 +331,37 @@ public class Note {
      */
     public void setShareCount(Integer shareCount) {
         this.shareCount = shareCount;
+    }
+
+    /**
+     * 是否置顶
+     * @return isTop 是否置顶
+     */
+    public Integer getIsTop() {
+        return isTop;
+    }
+
+    /**
+     * 是否置顶
+     * @param isTop 是否置顶
+     */
+    public void setIsTop(Integer isTop) {
+        this.isTop = isTop;
+    }
+
+    /**
+     * 显示索引
+     * @return showIndex 显示索引
+     */
+    public Integer getShowIndex() {
+        return showIndex;
+    }
+
+    /**
+     * 显示索引
+     * @param showIndex 显示索引
+     */
+    public void setShowIndex(Integer showIndex) {
+        this.showIndex = showIndex;
     }
 }
