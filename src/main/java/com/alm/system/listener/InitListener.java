@@ -20,7 +20,7 @@ public class InitListener implements ServletContextListener {
             System.out.println("====初始化...");
             GlobalDict.instance().init(sce.getServletContext());
 
-            System.out.println("====启动成功");
+            System.out.println("====初始化完成");
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
