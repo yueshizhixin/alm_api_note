@@ -4,10 +4,5 @@
 
 ### 简述
 - maven+springMVC+mybatis
-- SnowFlake 主键生成
 
-### 版本
-
-
-### 以下
 

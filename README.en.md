@@ -4,7 +4,4 @@
 
 ### Description
 - maven+springMVC+mybatis
-- SnowFlake generateId
-
-### Version
 
