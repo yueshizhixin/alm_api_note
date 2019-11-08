@@ -127,7 +127,7 @@ public class MybatisCommentUtil implements CommentGenerator {
     }
 
     /**
-     * 类注释
+     * example子类注释
      * @param innerClass
      * @param introspectedTable
      */
@@ -144,9 +144,9 @@ public class MybatisCommentUtil implements CommentGenerator {
         sb.append(currentDateStr);
         innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
         innerClass.addJavaDocLine(" */");
-        sb=new StringBuilder();
-        sb.append(String.format("@ApiModel(\"%s\")",introspectedTable.getRemarks()));
-        innerClass.addJavaDocLine(sb.toString());
+//        sb=new StringBuilder();
+//        sb.append(String.format("@ApiModel(\"%s\")",introspectedTable.getRemarks()));
+//        innerClass.addJavaDocLine(sb.toString());
     }
 
     @Override
@@ -208,6 +208,9 @@ public class MybatisCommentUtil implements CommentGenerator {
         sb.append(" <p>author lishuai</p>\n");
         sb.append(" <p>time   ").append(currentDateStr).append("</p>\n");
         sb.append("*/");
+        topLevelClass.addJavaDocLine(sb.toString());
+        sb=new StringBuilder();
+        sb.append(String.format("@ApiModel(\"%s\")",introspectedTable.getRemarks()));
         topLevelClass.addJavaDocLine(sb.toString());
         sb = null;
     }

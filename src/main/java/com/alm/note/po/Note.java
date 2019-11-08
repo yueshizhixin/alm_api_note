@@ -2,100 +2,65 @@ package com.alm.note.po;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 /**
  <p>table  笔记</p>
  <p>author lishuai</p>
- <p>time   2019-07-24</p>
+ <p>time   2019-11-08</p>
 */
 @ApiModel("笔记")
 public class Note {
-    /**
-     * 笔记id
-     */
+    @ApiModelProperty("笔记id")
     private Long id;
 
-    /**
-     * 用户id
-     */
+    @ApiModelProperty("用户id")
     private Long userId;
 
-    /**
-     * 标题
-     */
+    @ApiModelProperty("标题")
     private String title;
 
-    /**
-     * 是否私有
-     */
+    @ApiModelProperty("是否私有")
     private Integer isPrivate;
 
     @ApiModelProperty("概要")
     private String profile;
 
-    /**
-     * 内容
-     */
+    @ApiModelProperty("内容")
     private String content;
 
-    /**
-     * 一级标签
-     */
+    @ApiModelProperty("一级标签")
     private Integer tagId1;
 
-    /**
-     * 
-     */
+    @ApiModelProperty("")
     private String tagName1;
 
-    /**
-     * 二级标签
-     */
+    @ApiModelProperty("二级标签")
     private Integer tagId2;
 
-    /**
-     * 
-     */
+    @ApiModelProperty("")
     private String tagName2;
 
-    /**
-     * 创建时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty("创建时间")
     private Date createTime;
 
-    /**
-     * 更新时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
-    /**
-     * 阅读数
-     */
+    @ApiModelProperty("阅读数")
     private Integer readCount;
 
-    /**
-     * 评论数
-     */
+    @ApiModelProperty("评论数")
     private Integer commenCount;
 
-    /**
-     * 分享数
-     */
+    @ApiModelProperty("分享数")
     private Integer shareCount;
 
-    /**
-     * 是否置顶
-     */
+    @ApiModelProperty("是否置顶")
     private Integer isTop;
 
-    /**
-     * 显示索引
-     */
+    @ApiModelProperty("显示索引")
     private Integer showIndex;
 
     /**

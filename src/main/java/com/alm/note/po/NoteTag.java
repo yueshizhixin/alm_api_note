@@ -1,34 +1,28 @@
 package com.alm.note.po;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  <p>table  笔记标签</p>
  <p>author lishuai</p>
- <p>time   2019-01-17</p>
+ <p>time   2019-11-08</p>
 */
+@ApiModel("笔记标签")
 public class NoteTag {
-    /**
-     * 
-     */
+    @ApiModelProperty("")
     private Integer id;
 
-    /**
-     * 父标签
-     */
+    @ApiModelProperty("父标签")
     private Integer parentId;
 
-    /**
-     * 标签名称
-     */
+    @ApiModelProperty("标签名称")
     private String name;
 
-    /**
-     * 层级
-     */
+    @ApiModelProperty("层级")
     private Integer layer;
 
-    /**
-     * 显示顺序
-     */
+    @ApiModelProperty("显示顺序")
     private Integer sequence;
 
     /**
