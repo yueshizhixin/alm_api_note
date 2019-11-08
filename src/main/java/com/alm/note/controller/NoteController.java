@@ -49,7 +49,7 @@ public class NoteController {
         return RESTUtil.HTTP200(1, "操作成功");
     }
 
-    @ApiOperation("新增或更新筆記")
+    @ApiOperation("合并筆記")
     @Authority
     @RequestMapping(value = "/note/{id}", method = RequestMethod.POST)
     public String mergeNote(@ModelAttribute Note note, HttpSession session) {
