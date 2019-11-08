@@ -18,6 +18,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
 
+        <!--junit-->
         <junit.version>4.12</junit.version>
         <!--javaee版本-->
         <javaee.version>8.0</javaee.version>
@@ -50,15 +51,35 @@
         <lombok.version>1.16.20</lombok.version>
         <!--七牛云-->
         <qiniu.version>7.2.18</qiniu.version>
+        <!--swagger-->
+        <springfox_swagger2.version>2.9.2</springfox_swagger2.version>
+        <springfox_swagger_ui.version>2.9.2</springfox_swagger_ui.version>
+
     </properties>
 
     <dependencies>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox_swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox_swagger_ui.version}</version>
+        </dependency>
+
+        <!--junit-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!--七牛云-->
         <dependency>
             <groupId>com.qiniu</groupId>
             <artifactId>qiniu-java-sdk</artifactId>

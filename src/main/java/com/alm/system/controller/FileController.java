@@ -25,20 +25,20 @@ import java.io.File;
 @RequestMapping("/api/v1")
 public class FileController {
 
-    private static String ak = PropQiniuUtil.getAK();
-    private static String sk = PropQiniuUtil.getSK();
-    private static Auth auth = Auth.create(ak, sk);
-    private static String bucket = "alm-yszx";    //空间名
-    private static Configuration configuration = new Configuration(Zone.zone1());
-
-    /**
-     * 获取token
-     * 优化 计时器自动获取
-     */
-    @Authority
-    @RequestMapping(value = "/cdn/token", method = RequestMethod.GET)
-    public String getUpToken() {
-        return RESTUtil.HTTP200(auth.uploadToken(bucket, null, 30, new StringMap().put("insertOnly", 1)));
-    }
+//    private static String ak = PropQiniuUtil.getAK();
+//    private static String sk = PropQiniuUtil.getSK();
+//    private static Auth auth = Auth.create(ak, sk);
+//    private static String bucket = "alm-yszx";    //空间名
+//    private static Configuration configuration = new Configuration(Zone.zone1());
+//
+//    /**
+//     * 获取token
+//     * 优化 计时器自动获取
+//     */
+//    @Authority
+//    @RequestMapping(value = "/cdn/token", method = RequestMethod.GET)
+//    public String getUpToken() {
+//        return RESTUtil.HTTP200(auth.uploadToken(bucket, null, 30, new StringMap().put("insertOnly", 1)));
+//    }
 
 }

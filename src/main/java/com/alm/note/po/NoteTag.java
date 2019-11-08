@@ -1,7 +1,7 @@
 package com.alm.note.po;
 
 /**
- <p>table  笔记标签表</p>
+ <p>table  笔记标签</p>
  <p>author lishuai</p>
  <p>time   2019-01-17</p>
 */

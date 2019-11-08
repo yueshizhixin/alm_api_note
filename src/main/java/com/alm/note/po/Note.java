@@ -1,14 +1,17 @@
 package com.alm.note.po;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 /**
- <p>table  笔记表</p>
+ <p>table  笔记</p>
  <p>author lishuai</p>
  <p>time   2019-07-24</p>
 */
+@ApiModel("笔记")
 public class Note {
     /**
      * 笔记id
@@ -30,9 +33,7 @@ public class Note {
      */
     private Integer isPrivate;
 
-    /**
-     * 概要
-     */
+    @ApiModelProperty("概要")
     private String profile;
 
     /**

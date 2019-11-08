@@ -126,6 +126,11 @@ public class MybatisCommentUtil implements CommentGenerator {
         return result;
     }
 
+    /**
+     * 类注释
+     * @param innerClass
+     * @param introspectedTable
+     */
     @Override
     public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
@@ -139,6 +144,9 @@ public class MybatisCommentUtil implements CommentGenerator {
         sb.append(currentDateStr);
         innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
         innerClass.addJavaDocLine(" */");
+        sb=new StringBuilder();
+        sb.append(String.format("@ApiModel(\"%s\")",introspectedTable.getRemarks()));
+        innerClass.addJavaDocLine(sb.toString());
     }
 
     @Override
@@ -154,6 +162,12 @@ public class MybatisCommentUtil implements CommentGenerator {
         innerEnum.addJavaDocLine(" */");
     }
 
+    /**
+     * 字段注释
+     * @param field
+     * @param introspectedTable
+     * @param introspectedColumn
+     */
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable,
                                 IntrospectedColumn introspectedColumn) {
@@ -161,11 +175,17 @@ public class MybatisCommentUtil implements CommentGenerator {
             return;
         }
         StringBuilder sb = new StringBuilder();
-        field.addJavaDocLine("/**");
-        sb.append(" * ");
-        sb.append(introspectedColumn.getRemarks());
+//        field.addJavaDocLine("/**");
+//        sb.append(" * ");
+//        sb.append(introspectedColumn.getRemarks());
+//        field.addJavaDocLine(sb.toString().replace("\n", " "));
+//        field.addJavaDocLine(" */");
+        sb.append(String.format("@ApiModelProperty(\"%s\")",introspectedColumn.getRemarks()));
         field.addJavaDocLine(sb.toString().replace("\n", " "));
-        field.addJavaDocLine(" */");
+        if (introspectedColumn.isJDBCDateColumn() || introspectedColumn.isJDBCTimeColumn()) {
+            sb.append("@DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+            field.addJavaDocLine(sb.toString().replace("\n", " "));
+        }
     }
 
     @Override

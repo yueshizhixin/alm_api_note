@@ -26,7 +26,7 @@ import java.util.List;
  * <p>desc: </p>
  */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-@Service
+@Service("noteService")
 public class NoteServiceImpl implements NoteService {
 
     private final NoteMapper noteMapper;
